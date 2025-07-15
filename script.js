@@ -278,7 +278,7 @@ async function updateFollowerCount() {
     }
     
     // Fallback: Use current known count with slight organic growth simulation
-    const baseCount = 44; // Your current follower count
+    const baseCount = 45; // Your current follower count
     const currentDate = new Date();
     const startDate = new Date('2025-07-15'); // When you started tracking
     const daysElapsed = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24));
