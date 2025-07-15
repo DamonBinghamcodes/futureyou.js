@@ -33,26 +33,150 @@ body {
     height: 100%;
     object-fit: cover;
     z-index: -2;
+    /* iOS-specific fixes */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
-/* Responsive video adjustments */
-@media (max-width: 768px) {
+/* ===== RESPONSIVE VIDEO BACKGROUND ===== */
+
+/* Extra Large Desktops - 1440px and up */
+@media (min-width: 1440px) {
     .video-background {
         object-position: center center;
     }
+    
+    .video-overlay {
+        background: rgba(0, 0, 0, 0.4);
+    }
 }
 
+/* Large Desktops - 1200px to 1439px */
+@media (min-width: 1200px) and (max-width: 1439px) {
+    .video-background {
+        object-position: center center;
+    }
+    
+    .video-overlay {
+        background: rgba(0, 0, 0, 0.42);
+    }
+}
+
+/* Standard Desktops - 1024px to 1199px */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .video-background {
+        object-position: center center;
+    }
+    
+    .video-overlay {
+        background: rgba(0, 0, 0, 0.45);
+    }
+}
+
+/* Tablets (Portrait) - 768px to 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .video-background {
+        object-position: center center;
+        object-fit: cover;
+    }
+    
+    .video-overlay {
+        background: rgba(0, 0, 0, 0.48);
+    }
+}
+
+/* Large Mobile (Landscape) - 481px to 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+    .video-background {
+        object-position: center center;
+        object-fit: cover;
+    }
+    
+    .video-overlay {
+        background: rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Small Mobile (Portrait) - 320px to 480px */
+@media (max-width: 480px) {
+    .video-background {
+        object-position: center center;
+        object-fit: cover;
+        /* Optimize for mobile performance */
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    
+    .video-overlay {
+        background: rgba(0, 0, 0, 0.52);
+    }
+}
+
+/* Extra Small Mobile - 320px and below */
+@media (max-width: 320px) {
+    .video-background {
+        object-position: center center;
+        object-fit: cover;
+        /* Enhanced mobile optimization */
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    
+    .video-overlay {
+        background: rgba(0, 0, 0, 0.55);
+    }
+}
+
+/* ===== ORIENTATION-SPECIFIC VIDEO ADJUSTMENTS ===== */
+
+/* Portrait orientation on mobile devices */
 @media (orientation: portrait) and (max-width: 768px) {
     .video-background {
         object-fit: cover;
         object-position: center center;
+        width: 100vw;
+        height: 100vh;
+    }
+    
+    .video-overlay {
+        background: rgba(0, 0, 0, 0.5);
     }
 }
 
+/* Landscape orientation on mobile devices */
 @media (orientation: landscape) and (max-height: 500px) {
     .video-background {
         object-fit: cover;
         object-position: center center;
+        width: 100vw;
+        height: 100vh;
+    }
+    
+    .video-overlay {
+        background: rgba(0, 0, 0, 0.48);
+    }
+}
+
+/* Very short screens (landscape phones) */
+@media (max-height: 400px) {
+    .video-background {
+        object-fit: cover;
+        object-position: center center;
+    }
+    
+    .video-overlay {
+        background: rgba(0, 0, 0, 0.55);
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .video-background {
+        /* Better quality for retina displays */
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: optimize-contrast;
     }
 }
 
@@ -63,7 +187,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.45);
     z-index: -1;
 }
 
@@ -885,4 +1009,19 @@ body {
     max-width: 100vw;
     min-width: 100vw;
     min-height: 100vh;
+    /* Additional iOS Safari fixes */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+}
+
+/* iOS-specific video container fixes */
+@supports (-webkit-touch-callout: none) {
+    .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -2;
+    }
 }

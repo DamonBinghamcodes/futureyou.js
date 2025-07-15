@@ -180,14 +180,31 @@ function storeEmail(email) {
 // Initialize video playback
 function initializeVideo() {
     if (backgroundVideo) {
-        // Set video properties
-        backgroundVideo.volume = 0.3; // Set volume to 30%
+        // iOS-specific video setup
+        backgroundVideo.setAttribute('playsinline', 'true');
+        backgroundVideo.setAttribute('webkit-playsinline', 'true');
+        backgroundVideo.muted = true;
+        backgroundVideo.volume = 0;
         
-        // Try to play the video
-        backgroundVideo.play().catch(error => {
-            console.log('Video autoplay failed:', error);
-            // If autoplay fails, the user can use the controls to play manually
-        });
+        // Detect iOS
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        
+        if (isIOS) {
+            // iOS-specific handling
+            backgroundVideo.addEventListener('loadedmetadata', function() {
+                backgroundVideo.play().catch(error => {
+                    console.log('iOS video autoplay failed:', error);
+                });
+            });
+        } else {
+            // Standard video handling
+            backgroundVideo.volume = 0.3; // Set volume to 30% for non-iOS
+            
+            // Try to play the video
+            backgroundVideo.play().catch(error => {
+                console.log('Video autoplay failed:', error);
+            });
+        }
         
         // Add event listener to handle video errors
         backgroundVideo.addEventListener('error', function(e) {
@@ -202,6 +219,22 @@ function initializeVideo() {
         // Add event listener for when video starts playing
         backgroundVideo.addEventListener('play', function() {
             console.log('Video started playing');
+        });
+        
+        // Prevent video from going fullscreen on iOS
+        backgroundVideo.addEventListener('webkitbeginfullscreen', function(e) {
+            e.preventDefault();
+        });
+        
+        // Handle page visibility changes (helps with iOS background behavior)
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                backgroundVideo.pause();
+            } else {
+                backgroundVideo.play().catch(error => {
+                    console.log('Video resume failed:', error);
+                });
+            }
         });
     }
 }
