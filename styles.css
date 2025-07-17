@@ -57,15 +57,7 @@ body {
     width: 400px;
 }
 
-/* Neon glow animation */
-@keyframes glow {
-    from {
-        text-shadow: 0 0 20px #66cc66, 0 0 30px #66cc66, 0 0 40px #66cc66;
-    }
-    to {
-        text-shadow: 0 0 30px #66cc66, 0 0 50px #66cc66, 0 0 70px #66cc66;
-    }
-}
+
 
 /* Countdown timer styling */
 .countdown-container {
