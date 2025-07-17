@@ -760,13 +760,7 @@ body {
         text-shadow: 0 0 20px #00ff66, 0 0 40px #00ff66, 0 0 60px #00ff66, 0 0 80px #00ff66;
     }
     
-    .time-unit {
-        box-shadow: 0 0 20px rgba(0, 255, 102, 0.4);
-    }
     
-    .progress-fill {
-        box-shadow: 0 0 15px #00ff66;
-    }
 }
 
 /* Accessibility and reduced motion */
