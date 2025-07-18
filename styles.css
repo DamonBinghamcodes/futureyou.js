@@ -7,7 +7,11 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #ffffff;
+    background-image: url('./public/gradient-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #fff;
     overflow-x: hidden;
 }
@@ -15,7 +19,7 @@ body {
 /* Main container with video background */
 .main-container {
     min-height: 100vh;
-    background: #bbbbbb;
+    background: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -129,11 +133,11 @@ body {
 }
 
 .progress-percentage {
-    color: #3366cc;
+    color: #00ff66;
     font-size: 0.8rem;
     font-weight: bold;
     letter-spacing: 0.1em;
-    text-shadow: 0 0 5px #729beb;
+    text-shadow: 0 0 5px #00ff66;
     min-width: 30px;
 }
 
