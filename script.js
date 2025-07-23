@@ -496,24 +496,64 @@ function addInteractiveAnimations() {
     // Add enhanced focus effects to email input
     const emailInputs = document.querySelectorAll('#emailInput, #mce-EMAIL');
     emailInputs.forEach(input => {
+        // Function to update input state classes
+        function updateInputState() {
+            if (input.value.length > 0) {
+                input.classList.add('has-content');
+                input.classList.remove('empty-focused');
+            } else if (document.activeElement === input) {
+                input.classList.add('empty-focused');
+                input.classList.remove('has-content');
+            } else {
+                input.classList.remove('has-content', 'empty-focused');
+            }
+        }
+        
         input.addEventListener('focus', function() {
             // Add a subtle glow animation
             this.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            
+            // Update state classes
+            updateInputState();
+            
+            // Move cursor to end for better UX
+            setTimeout(() => {
+                if (this.value === '') {
+                    this.setSelectionRange(0, 0);
+                }
+            }, 10);
         });
         
         input.addEventListener('blur', function() {
-            // Reset transition
+            // Reset transition and update state
             this.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            updateInputState();
         });
         
-        // Add smooth typing animation
+        // Handle click to position cursor correctly
+        input.addEventListener('click', function() {
+            updateInputState();
+            if (this.value === '') {
+                // Position cursor at the beginning for empty field with left alignment
+                setTimeout(() => {
+                    this.setSelectionRange(0, 0);
+                }, 10);
+            }
+        });
+        
+        // Add smooth typing animation and state management
         input.addEventListener('input', function() {
+            updateInputState();
+            
             if (this.value.length > 0) {
                 this.style.transform = 'translateY(-1px)';
             } else {
                 this.style.transform = 'translateY(0)';
             }
         });
+        
+        // Initialize state on page load
+        updateInputState();
     });
 }
 

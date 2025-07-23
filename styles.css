@@ -229,6 +229,7 @@ body {
     -webkit-backdrop-filter: blur(20px);
     position: relative;
     text-align: center;
+    direction: ltr;
     z-index: 1;
     /* iOS specific fixes */
     -webkit-tap-highlight-color: transparent;
@@ -248,6 +249,7 @@ body {
     box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06),
                 0 8px 32px rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
+    text-align: left;
 }
 
 #emailInput::placeholder,
@@ -260,8 +262,24 @@ body {
 
 #emailInput:focus::placeholder,
 #mce-EMAIL:focus::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-    transform: translateX(4px);
+    color: rgba(255, 255, 255, 0.4);
+    opacity: 0.8;
+}
+
+/* Dynamic text alignment classes */
+#emailInput.has-content,
+#mce-EMAIL.has-content {
+    text-align: left !important;
+}
+
+#emailInput.empty-focused,
+#mce-EMAIL.empty-focused {
+    text-align: left !important;
+}
+
+#emailInput.empty-focused::placeholder,
+#mce-EMAIL.empty-focused::placeholder {
+    text-align: left;
 }
 
 /* Apple-inspired submit button */
