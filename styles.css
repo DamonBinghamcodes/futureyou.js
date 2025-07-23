@@ -1467,7 +1467,7 @@ body {
 /* Footer styling */
 .footer {
     position: absolute;
-    bottom: 0.5rem;
+    bottom: 1rem;
     text-align: center;
     width: 100%;
 }
