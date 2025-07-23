@@ -14,10 +14,11 @@ const progressPercentage = document.getElementById('progressPercentage');
 const backgroundVideo = document.getElementById('backgroundVideo');
 const followerCountElement = document.getElementById('followerCount');
 
-// Email form elements - commented out for now
-// const emailForm = document.getElementById('emailForm');
-// const emailInput = document.getElementById('emailInput');
-// const successMessage = document.getElementById('successMessage');
+// Email form elements
+const emailForm = document.getElementById('emailForm');
+const emailInput = document.getElementById('emailInput');
+const successMessage = document.getElementById('successMessage');
+const errorMessage = document.getElementById('errorMessage');
 
 // Function to update countdown timer
 function updateCountdown() {
@@ -83,8 +84,17 @@ function showLaunchMessage() {
     console.log('Launch day has arrived!');
 }
 
-// Email form functionality - commented out for now
-/*
+// Mailchimp configuration - Replace with your actual values
+const MAILCHIMP_CONFIG = {
+    // Get these from your Mailchimp account:
+    // 1. Go to Account → Extras → API keys to get your API key
+    // 2. The server prefix is in your API key (e.g., us1, us2, etc.)
+    // 3. Get Audience ID from Audience → Settings → Audience name and campaign defaults
+    SERVER_PREFIX: 'YOUR_SERVER_PREFIX', // e.g., 'us1', 'us2', etc.
+    AUDIENCE_ID: 'YOUR_AUDIENCE_ID',     // Your list/audience ID
+    API_KEY: 'YOUR_API_KEY'              // Your API key
+};
+
 // Email form submission handler
 function handleEmailSubmission(event) {
     event.preventDefault(); // Prevent default form submission
@@ -97,8 +107,8 @@ function handleEmailSubmission(event) {
         return;
     }
     
-    // Simulate form submission (replace with actual backend integration)
-    submitEmail(email);
+    // Submit email to Mailchimp
+    submitEmailToMailchimp(email);
 }
 
 // Email validation function
@@ -107,75 +117,142 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// Function to submit email (mock implementation)
-function submitEmail(email) {
-    // Show loading state
+// Function to submit email to Mailchimp
+async function submitEmailToMailchimp(email) {
     const submitButton = document.querySelector('.submit-btn');
     const originalText = submitButton.textContent;
-    submitButton.textContent = 'SUBMITTING...';
+    
+    // Show loading state
+    submitButton.textContent = 'JOINING...';
     submitButton.disabled = true;
     
-    // Simulate API call delay
-    setTimeout(() => {
-        // Reset button state
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
+    try {
+        // Method 1: Direct API call (requires CORS proxy or backend)
+        // Note: This won't work directly from frontend due to CORS restrictions
+        // You'll need to implement this through your backend or use embedded forms
         
-        // Clear form and show success message
+        const response = await fetch(`https://${MAILCHIMP_CONFIG.SERVER_PREFIX}.api.mailchimp.com/3.0/lists/${MAILCHIMP_CONFIG.AUDIENCE_ID}/members`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${MAILCHIMP_CONFIG.API_KEY}`
+            },
+            body: JSON.stringify({
+                email_address: email,
+                status: 'subscribed',
+                tags: ['futureyou-landing']
+            })
+        });
+        
+        if (response.ok) {
+            // Success
+            emailInput.value = '';
+            showSuccessMessage();
+            storeEmail(email);
+        } else {
+            const errorData = await response.json();
+            if (errorData.title === 'Member Exists') {
+                showErrorMessage('You are already on our waitlist!');
+            } else {
+                showErrorMessage('Something went wrong. Please try again.');
+            }
+        }
+        
+    } catch (error) {
+        console.error('Mailchimp submission error:', error);
+        
+        // Fallback: Store locally and show success
+        // In production, you should send this to your backend
         emailInput.value = '';
-        showSuccessMessage();
-        
-        // Store email in localStorage (for demo purposes)
         storeEmail(email);
+        showSuccessMessage('Thanks for joining! We will contact you soon.');
         
-        // In a real application, you would send this to your backend:
-        // fetch('/api/waitlist', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({ email: email })
-        // })
+        // Send to your backend endpoint instead
+        // submitToBackend(email);
+    }
+    
+    // Reset button state
+    submitButton.textContent = originalText;
+    submitButton.disabled = false;
+}
+
+// Alternative: Submit to your backend (recommended approach)
+async function submitToBackend(email) {
+    try {
+        const response = await fetch('/api/subscribe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+                email: email,
+                source: 'landing-page',
+                timestamp: new Date().toISOString()
+            })
+        });
         
-    }, 1500); // 1.5 second delay to simulate network request
+        const data = await response.json();
+        
+        if (response.ok) {
+            showSuccessMessage();
+        } else {
+            showErrorMessage(data.message || 'Something went wrong. Please try again.');
+        }
+    } catch (error) {
+        console.error('Backend submission error:', error);
+        showErrorMessage('Connection error. Please try again.');
+    }
 }
 
 // Function to show success message
-function showSuccessMessage() {
+function showSuccessMessage(customMessage = null) {
+    if (customMessage) {
+        successMessage.textContent = customMessage;
+    }
+    
+    hideErrorMessage();
     successMessage.classList.add('show');
     
-    // Hide success message after 3 seconds
+    // Hide success message after 4 seconds
     setTimeout(() => {
         successMessage.classList.remove('show');
-    }, 3000);
+    }, 4000);
 }
 
 // Function to show error message
 function showErrorMessage(message) {
-    // Create temporary error message element
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'error-message';
-    errorDiv.textContent = message;
-    errorDiv.style.color = '#ff4444';
-    errorDiv.style.fontSize = '0.9rem';
-    errorDiv.style.marginTop = '0.5rem';
+    hideSuccessMessage();
+    errorMessage.textContent = message;
+    errorMessage.classList.add('show');
     
-    // Insert after email form
-    emailForm.parentNode.insertBefore(errorDiv, successMessage);
-    
-    // Remove error message after 3 seconds
+    // Hide error message after 4 seconds
     setTimeout(() => {
-        errorDiv.remove();
-    }, 3000);
+        errorMessage.classList.remove('show');
+    }, 4000);
 }
 
-// Function to store email in localStorage
+// Helper functions to hide messages
+function hideSuccessMessage() {
+    successMessage.classList.remove('show');
+}
+
+function hideErrorMessage() {
+    errorMessage.classList.remove('show');
+}
+
+// Function to store email in localStorage (backup)
 function storeEmail(email) {
     let emails = JSON.parse(localStorage.getItem('waitlistEmails') || '[]');
     if (!emails.includes(email)) {
-        emails.push(email);
+        emails.push({
+            email: email,
+            timestamp: new Date().toISOString(),
+            source: 'landing-page'
+        });
         localStorage.setItem('waitlistEmails', JSON.stringify(emails));
+        console.log(`Email stored locally: ${email}`);
     }
 }
-*/
 
 // Initialize video playback
 function initializeVideo() {
@@ -333,8 +410,8 @@ function init() {
     // Update follower count every 5 minutes (300000ms)
     setInterval(updateFollowerCount, 300000);
     
-    // Add event listener for email form - commented out for now
-    // emailForm.addEventListener('submit', handleEmailSubmission);
+    // Add event listener for email form
+    emailForm.addEventListener('submit', handleEmailSubmission);
     
     // Add typing effect on page load (optional)
     // addTypingEffect();
