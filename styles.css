@@ -14,15 +14,7 @@ html {
     height: 100%;
 }
 
-/* Pulse animation for background */
-@keyframes pulse {
-    0%, 100% {
-        filter: brightness(1) saturate(1);
-    }
-    50% {
-        filter: brightness(1.2) saturate(1.3);
-    }
-}
+
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
