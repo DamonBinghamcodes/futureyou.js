@@ -181,7 +181,7 @@ body {
 .email-section {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     padding: 0 1rem;
     box-sizing: border-box;
     position: relative;
@@ -898,7 +898,7 @@ body {
     }
     
     .email-section {
-        margin-bottom: 1rem !important;
+        margin-bottom: 0.5rem !important;
         padding: 0 1rem !important;
     }
     
@@ -1041,6 +1041,14 @@ body {
     }
 }
 
+/* Instagram browser external link indicator */
+.instagram-browser .instagram-link::after {
+    content: "↗";
+    font-size: 0.6rem;
+    opacity: 0.7;
+    margin-left: 0.2rem;
+}
+
 /* Instagram browser specific styles */
 .instagram-browser .email-form {
     flex-direction: column !important;
@@ -1089,7 +1097,7 @@ body {
 }
 
 .instagram-browser .email-section {
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.5rem !important;
     padding: 0 1rem !important;
 }
 
@@ -1288,7 +1296,7 @@ body {
     background: rgba(0, 0, 0, 0.6);
     border: 1px solid rgba(0, 255, 102, 0.3);
     border-radius: 25px;
-    color: #92e692;
+    color: #ffffff;
     text-decoration: none;
     font-size: 0.75rem;
     font-weight: 500;
@@ -1301,10 +1309,10 @@ body {
 
 .instagram-link:hover {
     background: rgba(0, 255, 102, 0.1);
-    border-color: #92e692;
-    color: #92e692;
+    border-color: #ffffff;
+    color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 255, 102, 0.2);
+    box-shadow: 0 8px 25px rgba(248, 248, 248, 0.2);
 }
 
 /* Profile picture container */
@@ -1314,7 +1322,7 @@ body {
     height: 32px;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid #92e692;
+    border: 2px solid #ffffff;
     background: rgba(0, 255, 102, 0.1);
     flex-shrink: 0;
 }
@@ -1492,15 +1500,15 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: #00ff66;
+    color: #ffffff;
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
     transition: all 0.3s ease;
     padding: 0.5rem 1rem;
-    border: 1px solid rgba(0, 255, 102, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.577);
     border-radius: 20px;
-    background: rgba(0, 255, 102, 0.05);
+    background: rgba(255, 255, 255, 0.18);
 }
 
 .instagram-link:hover {

@@ -436,6 +436,94 @@ function fixInstagramLayout() {
                 }
             });
         }
+        
+        // Fix Instagram links to work in Instagram browser
+        fixInstagramLinks();
+    }
+}
+
+// Function to fix Instagram links in Instagram browser
+function fixInstagramLinks() {
+    const instagramLinks = document.querySelectorAll('.instagram-link');
+    
+    instagramLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const url = this.href;
+            console.log('Instagram link clicked:', url);
+            
+            // Try multiple methods to open the link externally
+            if (url.includes('instagram.com')) {
+                // Extract Instagram handle
+                const pathParts = url.split('/');
+                const instagramHandle = pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2];
+                
+                // Method 1: Try Instagram app URL scheme
+                const instagramAppUrl = `instagram://user?username=${instagramHandle}`;
+                
+                // Try to open in Instagram app first
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = instagramAppUrl;
+                document.body.appendChild(iframe);
+                
+                // Remove iframe after a short delay
+                setTimeout(() => {
+                    document.body.removeChild(iframe);
+                }, 1000);
+                
+                // Fallback to external browser after delay
+                setTimeout(() => {
+                    openInExternalBrowser(url);
+                }, 500);
+            } else {
+                openInExternalBrowser(url);
+            }
+        }, true);
+        
+        // Also try to override the default link behavior
+        link.setAttribute('rel', 'noopener noreferrer');
+        link.setAttribute('target', '_blank');
+    });
+}
+
+// Function to open URL in external browser
+function openInExternalBrowser(url) {
+    // Method 1: Try window.open with specific parameters
+    try {
+        const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+        if (newWindow) {
+            newWindow.focus();
+            return;
+        }
+    } catch (error) {
+        console.log('Window.open failed:', error);
+    }
+    
+    // Method 2: Try creating a temporary link with target _system (for mobile)
+    try {
+        const tempLink = document.createElement('a');
+        tempLink.href = url;
+        tempLink.target = '_system'; // Mobile-specific
+        tempLink.rel = 'noopener noreferrer';
+        tempLink.style.display = 'none';
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        document.body.removeChild(tempLink);
+        return;
+    } catch (error) {
+        console.log('System link failed:', error);
+    }
+    
+    // Method 3: Try location.href as last resort
+    try {
+        window.location.href = url;
+    } catch (error) {
+        console.log('Location.href failed:', error);
+        // Show user message if all methods fail
+        alert('Please copy this link and open it in your browser: ' + url);
     }
 }
 
@@ -446,6 +534,11 @@ function init() {
     
     // Fix Instagram browser layout issues
     fixInstagramLayout();
+    
+    // If not Instagram browser, still fix Instagram links for better compatibility
+    if (!isInstagramBrowser()) {
+        fixInstagramLinks();
+    }
     
     // Start countdown timer
     updateCountdown(); // Initial call
