@@ -407,80 +407,8 @@ function fixInstagramLayout() {
         // Add Instagram-specific class to body
         document.body.classList.add('instagram-browser');
         
-        // Force vertical layout for email form symmetry
-        const emailForm = document.querySelector('.email-form');
-        const mcEmbedScroll = document.getElementById('mc_embed_signup_scroll');
-        const emailSection = document.querySelector('.email-section');
-        const heroSection = document.querySelector('.hero-section');
-        const mainContainer = document.querySelector('.main-container');
-        const footer = document.querySelector('.footer');
-        
-        if (emailForm) {
-            emailForm.style.display = 'flex';
-            emailForm.style.flexDirection = 'column';
-            emailForm.style.alignItems = 'center';
-            emailForm.style.justifyContent = 'center';
-            emailForm.style.gap = '1rem';
-            emailForm.style.width = '100%';
-            emailForm.style.maxWidth = '280px';
-            emailForm.style.margin = '0 auto';
-        }
-        
-        if (mcEmbedScroll) {
-            mcEmbedScroll.style.display = 'flex';
-            mcEmbedScroll.style.flexDirection = 'column';
-            mcEmbedScroll.style.alignItems = 'center';
-            mcEmbedScroll.style.gap = '1rem';
-            mcEmbedScroll.style.width = '100%';
-        }
-        
-        // Add spacing to prevent footer overlap
-        if (emailSection) {
-            emailSection.style.marginBottom = '8rem';
-        }
-        
-        if (heroSection) {
-            heroSection.style.paddingBottom = '8rem';
-        }
-        
-        if (mainContainer) {
-            mainContainer.style.paddingBottom = '12rem';
-            mainContainer.style.minHeight = '100vh';
-        }
-        
-        // Fix footer positioning for Instagram
-        if (footer) {
-            footer.style.position = 'fixed';
-            footer.style.bottom = '0';
-            footer.style.left = '0';
-            footer.style.right = '0';
-            footer.style.zIndex = '1000';
-            footer.style.background = 'rgba(0, 0, 0, 0.8)';
-            footer.style.backdropFilter = 'blur(10px)';
-            footer.style.padding = '1rem';
-        }
-        
-        // Force input and button to same width for symmetry
-        const emailInput = document.getElementById('mce-EMAIL');
-        const submitButton = document.getElementById('mc-embedded-subscribe');
-        
-        if (emailInput) {
-            emailInput.style.width = '100%';
-            emailInput.style.maxWidth = '280px';
-            emailInput.style.textAlign = 'center';
-            emailInput.style.boxSizing = 'border-box';
-            emailInput.style.fontSize = '16px';
-            emailInput.style.padding = '1rem';
-        }
-        
-        if (submitButton) {
-            submitButton.style.width = '100%';
-            submitButton.style.maxWidth = '280px';
-            submitButton.style.whiteSpace = 'nowrap';
-            submitButton.style.boxSizing = 'border-box';
-            submitButton.style.fontSize = '14px';
-            submitButton.style.padding = '1rem';
-        }
+        // The CSS will handle the layout automatically
+        // No need for complex JavaScript positioning
     }
 }
 
