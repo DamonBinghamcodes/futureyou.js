@@ -393,10 +393,74 @@ function setFollowerCount(count) {
     localStorage.setItem('lastUpdated', new Date().toISOString());
 }
 
+// Function to detect Instagram in-app browser
+function isInstagramBrowser() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    return userAgent.indexOf('Instagram') > -1;
+}
+
+// Function to fix Instagram layout issues
+function fixInstagramLayout() {
+    if (isInstagramBrowser()) {
+        console.log('Instagram browser detected - applying fixes');
+        
+        // Add Instagram-specific class to body
+        document.body.classList.add('instagram-browser');
+        
+        // Force vertical layout for email form symmetry
+        const emailForm = document.querySelector('.email-form');
+        const mcEmbedScroll = document.getElementById('mc_embed_signup_scroll');
+        
+        if (emailForm) {
+            emailForm.style.display = 'flex';
+            emailForm.style.flexDirection = 'column';
+            emailForm.style.alignItems = 'center';
+            emailForm.style.justifyContent = 'center';
+            emailForm.style.gap = '1rem';
+            emailForm.style.width = '100%';
+            emailForm.style.maxWidth = '280px';
+            emailForm.style.margin = '0 auto';
+        }
+        
+        if (mcEmbedScroll) {
+            mcEmbedScroll.style.display = 'flex';
+            mcEmbedScroll.style.flexDirection = 'column';
+            mcEmbedScroll.style.alignItems = 'center';
+            mcEmbedScroll.style.gap = '1rem';
+            mcEmbedScroll.style.width = '100%';
+        }
+        
+        // Force input and button to same width for symmetry
+        const emailInput = document.getElementById('mce-EMAIL');
+        const submitButton = document.getElementById('mc-embedded-subscribe');
+        
+        if (emailInput) {
+            emailInput.style.width = '100%';
+            emailInput.style.maxWidth = '280px';
+            emailInput.style.textAlign = 'center';
+            emailInput.style.boxSizing = 'border-box';
+            emailInput.style.fontSize = '16px';
+            emailInput.style.padding = '1rem';
+        }
+        
+        if (submitButton) {
+            submitButton.style.width = '100%';
+            submitButton.style.maxWidth = '280px';
+            submitButton.style.whiteSpace = 'nowrap';
+            submitButton.style.boxSizing = 'border-box';
+            submitButton.style.fontSize = '14px';
+            submitButton.style.padding = '1rem';
+        }
+    }
+}
+
 // Initialize the application
 function init() {
     // Initialize video playback
     initializeVideo();
+    
+    // Fix Instagram browser layout issues
+    fixInstagramLayout();
     
     // Start countdown timer
     updateCountdown(); // Initial call
