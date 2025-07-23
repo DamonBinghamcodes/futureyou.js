@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-image: url('./public/gradient-background.png');
+    /*background-image: url('./public/gradient-background.png');*/
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -26,7 +26,7 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(16, 16, 16, 0.795);
     opacity: 0.1;
 }
 
