@@ -510,39 +510,50 @@ function addInteractiveAnimations() {
         }
         
         input.addEventListener('focus', function() {
-            // Add a subtle glow animation
-            this.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            // Immediately change text alignment to prevent cursor in middle
+            this.style.textAlign = 'left';
             
             // Update state classes
             updateInputState();
             
-            // Move cursor to end for better UX
+            // Move cursor to start for better UX
             setTimeout(() => {
                 if (this.value === '') {
                     this.setSelectionRange(0, 0);
                 }
-            }, 10);
+            }, 1);
         });
         
         input.addEventListener('blur', function() {
-            // Reset transition and update state
-            this.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            // Reset text alignment based on content
+            if (this.value === '') {
+                this.style.textAlign = 'center';
+            } else {
+                this.style.textAlign = 'left';
+            }
+            
+            // Update state classes
             updateInputState();
         });
         
         // Handle click to position cursor correctly
         input.addEventListener('click', function() {
+            // Force left alignment on click
+            this.style.textAlign = 'left';
             updateInputState();
+            
             if (this.value === '') {
-                // Position cursor at the beginning for empty field with left alignment
+                // Position cursor at the beginning for empty field
                 setTimeout(() => {
                     this.setSelectionRange(0, 0);
-                }, 10);
+                }, 1);
             }
         });
         
         // Add smooth typing animation and state management
         input.addEventListener('input', function() {
+            // Keep left alignment while typing
+            this.style.textAlign = 'left';
             updateInputState();
             
             if (this.value.length > 0) {
