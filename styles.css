@@ -49,7 +49,7 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
-    background-color: rgba(16, 16, 16, 0.795);
+    background-color: rgba(0, 0, 0, 0.795);
 }
 
 
@@ -946,8 +946,24 @@ body {
 .instagram-browser #mce-EMAIL {
     width: 100% !important;
     max-width: 280px !important;
-    text-align: center !important;
     flex: none !important;
+    text-align: center !important;
+}
+
+/* Instagram browser input focus overrides */
+.instagram-browser #mce-EMAIL:focus,
+.instagram-browser #mce-EMAIL:active,
+.instagram-browser #mce-EMAIL.focused {
+    text-align: left !important;
+    caret-color: #fff !important;
+    -webkit-text-align-last: left !important;
+    text-align-last: left !important;
+}
+
+.instagram-browser #mce-EMAIL:focus::placeholder,
+.instagram-browser #mce-EMAIL.focused::placeholder {
+    text-align: left !important;
+    opacity: 0.6 !important;
 }
 
 .instagram-browser .submit-btn,

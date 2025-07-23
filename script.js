@@ -407,8 +407,35 @@ function fixInstagramLayout() {
         // Add Instagram-specific class to body
         document.body.classList.add('instagram-browser');
         
-        // The CSS will handle the layout automatically
-        // No need for complex JavaScript positioning
+        // Add specific Instagram input handling
+        const emailInput = document.getElementById('mce-EMAIL');
+        if (emailInput) {
+            // Force immediate left alignment on any interaction
+            const forceLeftAlign = function() {
+                emailInput.style.textAlign = 'left';
+                emailInput.style.setProperty('text-align', 'left', 'important');
+                emailInput.style.setProperty('-webkit-text-align-last', 'left', 'important');
+                emailInput.style.setProperty('text-align-last', 'left', 'important');
+            };
+            
+            // Instagram-specific event handling
+            emailInput.addEventListener('focus', forceLeftAlign, true);
+            emailInput.addEventListener('click', forceLeftAlign, true);
+            emailInput.addEventListener('touchstart', forceLeftAlign, true);
+            emailInput.addEventListener('input', forceLeftAlign, true);
+            
+            // Also handle when Instagram webview regains focus
+            window.addEventListener('focus', function() {
+                if (document.activeElement === emailInput) {
+                    forceLeftAlign();
+                    setTimeout(() => {
+                        if (emailInput.value === '') {
+                            emailInput.setSelectionRange(0, 0);
+                        }
+                    }, 50);
+                }
+            });
+        }
     }
 }
 
@@ -512,6 +539,13 @@ function addInteractiveAnimations() {
         input.addEventListener('focus', function() {
             // Immediately change text alignment to prevent cursor in middle
             this.style.textAlign = 'left';
+            this.style.setProperty('text-align', 'left', 'important');
+            
+            // Instagram browser needs extra force
+            if (document.body.classList.contains('instagram-browser')) {
+                this.style.setProperty('-webkit-text-align-last', 'left', 'important');
+                this.style.setProperty('text-align-last', 'left', 'important');
+            }
             
             // Update state classes
             updateInputState();
@@ -540,6 +574,14 @@ function addInteractiveAnimations() {
         input.addEventListener('click', function() {
             // Force left alignment on click
             this.style.textAlign = 'left';
+            this.style.setProperty('text-align', 'left', 'important');
+            
+            // Instagram browser needs extra force
+            if (document.body.classList.contains('instagram-browser')) {
+                this.style.setProperty('-webkit-text-align-last', 'left', 'important');
+                this.style.setProperty('text-align-last', 'left', 'important');
+            }
+            
             updateInputState();
             
             if (this.value === '') {
@@ -550,10 +592,31 @@ function addInteractiveAnimations() {
             }
         });
         
+        // Handle touch events for mobile/Instagram
+        input.addEventListener('touchstart', function() {
+            // Force left alignment on touch
+            this.style.textAlign = 'left';
+            this.style.setProperty('text-align', 'left', 'important');
+            
+            // Instagram browser needs extra force
+            if (document.body.classList.contains('instagram-browser')) {
+                this.style.setProperty('-webkit-text-align-last', 'left', 'important');
+                this.style.setProperty('text-align-last', 'left', 'important');
+            }
+        });
+        
         // Add smooth typing animation and state management
         input.addEventListener('input', function() {
             // Keep left alignment while typing
             this.style.textAlign = 'left';
+            this.style.setProperty('text-align', 'left', 'important');
+            
+            // Instagram browser needs extra force
+            if (document.body.classList.contains('instagram-browser')) {
+                this.style.setProperty('-webkit-text-align-last', 'left', 'important');
+                this.style.setProperty('text-align-last', 'left', 'important');
+            }
+            
             updateInputState();
             
             if (this.value.length > 0) {
