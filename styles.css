@@ -152,88 +152,513 @@ body {
     text-align: center;
 }
 
-/* Email signup section */
+/* ===== EMAIL SIGNUP SECTION - MOBILE FIRST ===== */
+
+/* Base mobile styles (320px and up) */
 .email-section {
     width: 100%;
-    max-width: 400px;
+    max-width: 100%;
     margin-bottom: 2rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 .email-prompt {
     color: #fff;
-    margin-bottom: 1.5rem;
-    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
     opacity: 0.9;
     text-align: center;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
 }
 
 .email-form {
     display: flex;
-    gap: 1rem;
+    flex-direction: row;
+    gap: 0.8rem;
     margin-bottom: 1rem;
+    width: 100%;
 }
 
-#emailInput {
+/* Base input and button styles - mobile first */
+#emailInput,
+#mce-EMAIL {
     flex: 1;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.7);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
+    min-width: 0;
+    padding: 0.9rem 1rem;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
     color: #fff;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
-#emailInput:focus {
+#emailInput:focus,
+#mce-EMAIL:focus {
     outline: none;
     border-color: #00ff66;
-    box-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
+    box-shadow: 0 0 8px rgba(0, 255, 102, 0.2);
+    background: rgba(0, 0, 0, 0.9);
 }
 
-#emailInput::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+#emailInput::placeholder,
+#mce-EMAIL::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
 }
 
-.submit-btn {
-    padding: 1rem 2rem;
+.submit-btn,
+#mc-embedded-subscribe {
+    width: auto;
+    min-width: 100px;
+    padding: 1rem 1.2rem;
     background: transparent;
-    border: 2px solid #00ff66;
-    border-radius: 5px;
+    border: 1px solid #00ff66;
+    border-radius: 4px;
     color: #00ff66;
-    font-weight: bold;
-    font-size: 1rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+    font-family: inherit;
     cursor: pointer;
     transition: all 0.3s ease;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    -webkit-appearance: none;
+    appearance: none;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
-.submit-btn:hover {
+.submit-btn:hover,
+#mc-embedded-subscribe:hover,
+.submit-btn:active,
+#mc-embedded-subscribe:active {
     background: #00ff66;
     color: #000;
-    box-shadow: 0 0 20px #00ff66;
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.3);
+    transform: translateY(-1px);
 }
 
 /* Success and error messages */
-.success-message, .error-message {
-    font-weight: bold;
+.success-message, 
+.error-message {
+    font-weight: 600;
     opacity: 0;
     transform: translateY(10px);
     transition: all 0.3s ease;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 0.8rem;
+    font-size: 0.85rem;
+    padding: 0.5rem;
+    border-radius: 4px;
 }
 
 .success-message {
     color: #00ff66;
+    background: rgba(0, 255, 102, 0.05);
+    border: 1px solid rgba(0, 255, 102, 0.2);
 }
 
 .error-message {
     color: #ff6666;
+    background: rgba(255, 102, 102, 0.05);
+    border: 1px solid rgba(255, 102, 102, 0.2);
 }
 
-.success-message.show, .error-message.show {
+.success-message.show, 
+.error-message.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ===== RESPONSIVE EMAIL SIGNUP - MEDIA QUERIES ===== */
+
+/* Large Mobile (Landscape) - 481px to 767px */
+@media (min-width: 481px) {
+    .email-section {
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+    }
+    
+    .email-prompt {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .email-form {
+        gap: 1rem;
+    }
+    
+    #emailInput,
+    #mce-EMAIL {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    
+    .submit-btn,
+    #mc-embedded-subscribe {
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .success-message, 
+    .error-message {
+        font-size: 0.9rem;
+        margin-top: 1rem;
+    }
+}
+
+/* Tablets (Portrait) - 768px to 1023px */
+@media (min-width: 768px) {
+    .email-section {
+        max-width: 450px;
+        margin-bottom: 2.5rem;
+    }
+    
+    .email-prompt {
+        font-size: 1.1rem;
+        margin-bottom: 1.8rem;
+        font-weight: 400;
+    }
+    
+    .email-form {
+        gap: 1.2rem;
+    }
+    
+    #emailInput,
+    #mce-EMAIL {
+        padding: 1.1rem 1.2rem;
+        font-size: 1rem;
+        border-radius: 5px;
+    }
+    
+    .submit-btn,
+    #mc-embedded-subscribe {
+        padding: 1.1rem 2rem;
+        font-size: 1rem;
+        border-radius: 5px;
+    }
+    
+    .success-message, 
+    .error-message {
+        font-size: 0.95rem;
+        margin-top: 1.2rem;
+        padding: 0.7rem;
+    }
+}
+
+/* Standard Desktops - 1024px to 1199px */
+@media (min-width: 1024px) {
+    .email-section {
+        max-width: 500px;
+        margin-bottom: 3rem;
+    }
+    
+    .email-prompt {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+    }
+    
+    .email-form {
+        gap: 1.5rem;
+    }
+    
+    #emailInput,
+    #mce-EMAIL {
+        padding: 1.2rem 1.3rem;
+        font-size: 1.1rem;
+        border-width: 2px;
+    }
+    
+    #emailInput:focus,
+    #mce-EMAIL:focus {
+        box-shadow: 0 0 12px rgba(0, 255, 102, 0.3);
+    }
+    
+    .submit-btn,
+    #mc-embedded-subscribe {
+        padding: 1.2rem 2.5rem;
+        font-size: 1.1rem;
+        border-width: 2px;
+    }
+    
+    .submit-btn:hover,
+    #mc-embedded-subscribe:hover {
+        box-shadow: 0 0 20px rgba(0, 255, 102, 0.4);
+    }
+    
+    .success-message, 
+    .error-message {
+        font-size: 1rem;
+        margin-top: 1.5rem;
+        padding: 0.8rem;
+    }
+}
+
+/* Large Desktops - 1200px to 1439px */
+@media (min-width: 1200px) {
+    .email-section {
+        max-width: 550px;
+        margin-bottom: 3.5rem;
+    }
+    
+    .email-prompt {
+        font-size: 1.3rem;
+        margin-bottom: 2.2rem;
+    }
+    
+    #emailInput,
+    #mce-EMAIL {
+        padding: 1.3rem 1.5rem;
+        font-size: 1.1rem;
+    }
+    
+    .submit-btn,
+    #mc-embedded-subscribe {
+        padding: 1.3rem 3rem;
+        font-size: 1.1rem;
+    }
+}
+
+/* Extra Large Desktops - 1440px and up */
+@media (min-width: 1440px) {
+    .email-section {
+        max-width: 600px;
+        margin-bottom: 4rem;
+    }
+    
+    .email-prompt {
+        font-size: 1.4rem;
+        margin-bottom: 2.5rem;
+        font-weight: 300;
+    }
+    
+    .email-form {
+        gap: 2rem;
+    }
+    
+    #emailInput,
+    #mce-EMAIL {
+        padding: 1.5rem 1.8rem;
+        font-size: 1.2rem;
+        border-radius: 6px;
+    }
+    
+    .submit-btn,
+    #mc-embedded-subscribe {
+        padding: 1.5rem 3.5rem;
+        font-size: 1.2rem;
+        border-radius: 6px;
+    }
+    
+    .success-message, 
+    .error-message {
+        font-size: 1.1rem;
+        margin-top: 2rem;
+        padding: 1rem;
+        border-radius: 5px;
+    }
+}
+
+/* High DPI / Retina displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    #emailInput,
+    #mce-EMAIL {
+        border-width: 1.5px;
+    }
+    
+    .submit-btn,
+    #mc-embedded-subscribe {
+        border-width: 1.5px;
+    }
+    
+    .submit-btn:hover,
+    #mc-embedded-subscribe:hover {
+        box-shadow: 0 0 25px rgba(0, 255, 102, 0.5);
+    }
+}
+
+/* Landscape orientation optimizations */
+@media (orientation: landscape) and (max-height: 600px) {
+    .email-section {
+        margin-bottom: 1.5rem;
+    }
+    
+    .email-prompt {
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    #emailInput,
+    #mce-EMAIL {
+        padding: 0.8rem 1rem;
+    }
+    
+    .submit-btn,
+    #mc-embedded-subscribe {
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+/* Very small height devices */
+@media (max-height: 500px) {
+    .email-section {
+        margin-bottom: 1rem;
+    }
+    
+    .email-prompt {
+        margin-bottom: 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .email-form {
+        gap: 0.5rem;
+    }
+    
+    #emailInput,
+    #mce-EMAIL {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.85rem;
+    }
+    
+    .submit-btn,
+    #mc-embedded-subscribe {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Accessibility and reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    #emailInput,
+    #mce-EMAIL,
+    .submit-btn,
+    #mc-embedded-subscribe,
+    .success-message,
+    .error-message {
+        transition: none;
+    }
+    
+    .submit-btn:hover,
+    #mc-embedded-subscribe:hover {
+        transform: none;
+    }
+}
+
+/* ===== MAILCHIMP EMBEDDED FORM INTEGRATION ===== */
+
+#mc_embed_signup {
+    width: 100% !important;
+    background: transparent !important;
+    clear: none !important;
+    font-family: inherit !important;
+}
+
+#mc_embed_signup form {
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: left !important;
+}
+
+#mc_embed_signup_scroll {
+    width: 100% !important;
+}
+
+#mc_embed_signup .mc-field-group {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+/* Override Mailchimp styles to use our responsive design */
+#mc_embed_signup .mc-field-group,
+#mc_embed_signup .optionalParent,
+#mc_embed_signup .clear.foot {
+    display: contents !important;
+}
+
+/* Hide unwanted Mailchimp elements */
+#mc_embed_signup h2,
+#mc_embed_signup .indicates-required,
+#mc_embed_signup label,
+#mc_embed_signup .asterisk {
+    display: none !important;
+}
+
+/* Mailchimp response messages - mobile first */
+#mc_embed_signup div.mce_inline_error,
+#mc_embed_signup div.response {
+    background-color: rgba(255, 102, 102, 0.1) !important;
+    border: 1px solid #ff6666 !important;
+    color: #ff6666 !important;
+    border-radius: 4px !important;
+    padding: 0.5rem !important;
+    margin: 0.8rem 0 0 0 !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    text-align: center !important;
+    font-family: inherit !important;
+}
+
+#mc_embed_signup div.response {
+    background-color: rgba(0, 255, 102, 0.1) !important;
+    border-color: #00ff66 !important;
+    color: #00ff66 !important;
+}
+
+#mc_embed_signup #mce-responses {
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    clear: none !important;
+    width: 100% !important;
+}
+
+/* Responsive Mailchimp message styling */
+@media (min-width: 481px) {
+    #mc_embed_signup div.mce_inline_error,
+    #mc_embed_signup div.response {
+        font-size: 0.9rem !important;
+        margin-top: 1rem !important;
+    }
+}
+
+@media (min-width: 768px) {
+    #mc_embed_signup div.mce_inline_error,
+    #mc_embed_signup div.response {
+        font-size: 0.95rem !important;
+        padding: 0.7rem !important;
+        margin-top: 1.2rem !important;
+        border-radius: 5px !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    #mc_embed_signup div.mce_inline_error,
+    #mc_embed_signup div.response {
+        font-size: 1rem !important;
+        padding: 0.8rem !important;
+        margin-top: 1.5rem !important;
+    }
+}
+
+@media (min-width: 1440px) {
+    #mc_embed_signup div.mce_inline_error,
+    #mc_embed_signup div.response {
+        font-size: 1.1rem !important;
+        padding: 1rem !important;
+        margin-top: 2rem !important;
+    }
 }
 
 /* Footer styling */

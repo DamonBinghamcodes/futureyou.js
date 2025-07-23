@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FUTUREYOU - Coming Soon</title>
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- jQuery (required for Mailchimp validation) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Mailchimp Form Validation -->
+    <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
 </head>
 <body>
     <!-- Main container with background overlay -->
@@ -67,23 +72,35 @@
                 <span class="progress-text">PROGRESS TO LAUNCH</span>
             </div>
             
-            <!-- Email Signup Form -->
-            <div class="email-section">
+            <!-- Email Signup Form - Mailchimp -->
+            <div class="email-section" id="mailchimp-container">
                 <p class="email-prompt">Enter your email to join the waitlist</p>
-                <form class="email-form" id="emailForm">
-                    <input 
-                        type="email" 
-                        id="emailInput" 
-                        placeholder="your@email.com" 
-                        required
-                    >
-                    <button type="submit" class="submit-btn">JOIN WAITLIST</button>
-                </form>
-                <div class="success-message" id="successMessage">
-                    ✓ Welcome to the future!
-                </div>
-                <div class="error-message" id="errorMessage">
-                    Something went wrong. Please try again.
+                
+                <div id="mc_embed_signup">
+                    <form action="https://futureyoupsd.us2.list-manage.com/subscribe/post?u=0abd978b85418b3a0f5584ee5&amp;id=96c06edeb6&amp;f_id=0019c2e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate email-form" target="_blank">
+                        <div id="mc_embed_signup_scroll">
+                            <div class="mc-field-group">
+                                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" placeholder="your@email.com">
+                            </div>
+                            
+                            <!-- Honeypot field (hidden from users, prevents bots) -->
+                            <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                <input type="text" name="b_0abd978b85418b3a0f5584ee5_96c06edeb6" tabindex="-1" value="">
+                            </div>
+                            
+                            <div class="optionalParent">
+                                <div class="clear foot">
+                                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button submit-btn" value="JOIN WAITLIST">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Response messages -->
+                        <div id="mce-responses" class="clear foot">
+                            <div class="response" id="mce-error-response" style="display: none;"></div>
+                            <div class="response" id="mce-success-response" style="display: none;"></div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -113,5 +130,16 @@
     </div>
 
     <script src="script.js"></script>
+    
+    <!-- Mailchimp Form Validation Setup -->
+    <script>
+    (function($) {
+        window.fnames = new Array(); 
+        window.ftypes = new Array();
+        fnames[0]='EMAIL';
+        ftypes[0]='email';
+    }(jQuery));
+    var $mcj = jQuery.noConflict(true);
+    </script>
 </body>
 </html>
