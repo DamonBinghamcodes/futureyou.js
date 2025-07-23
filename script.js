@@ -410,6 +410,10 @@ function fixInstagramLayout() {
         // Force vertical layout for email form symmetry
         const emailForm = document.querySelector('.email-form');
         const mcEmbedScroll = document.getElementById('mc_embed_signup_scroll');
+        const emailSection = document.querySelector('.email-section');
+        const heroSection = document.querySelector('.hero-section');
+        const mainContainer = document.querySelector('.main-container');
+        const footer = document.querySelector('.footer');
         
         if (emailForm) {
             emailForm.style.display = 'flex';
@@ -428,6 +432,32 @@ function fixInstagramLayout() {
             mcEmbedScroll.style.alignItems = 'center';
             mcEmbedScroll.style.gap = '1rem';
             mcEmbedScroll.style.width = '100%';
+        }
+        
+        // Add spacing to prevent footer overlap
+        if (emailSection) {
+            emailSection.style.marginBottom = '8rem';
+        }
+        
+        if (heroSection) {
+            heroSection.style.paddingBottom = '8rem';
+        }
+        
+        if (mainContainer) {
+            mainContainer.style.paddingBottom = '12rem';
+            mainContainer.style.minHeight = '100vh';
+        }
+        
+        // Fix footer positioning for Instagram
+        if (footer) {
+            footer.style.position = 'fixed';
+            footer.style.bottom = '0';
+            footer.style.left = '0';
+            footer.style.right = '0';
+            footer.style.zIndex = '1000';
+            footer.style.background = 'rgba(0, 0, 0, 0.8)';
+            footer.style.backdropFilter = 'blur(10px)';
+            footer.style.padding = '1rem';
         }
         
         // Force input and button to same width for symmetry
