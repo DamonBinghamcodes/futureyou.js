@@ -413,11 +413,46 @@ function init() {
     // Add event listener for email form
     emailForm.addEventListener('submit', handleEmailSubmission);
     
+    // Add Apple-style ripple effects to buttons
+    addRippleEffects();
+    
     // Add typing effect on page load (optional)
     // addTypingEffect();
     
     // Add some interactive animations
     addInteractiveAnimations();
+}
+
+// Function to add Apple-style ripple effects
+function addRippleEffects() {
+    const buttons = document.querySelectorAll('.submit-btn, #mc-embedded-subscribe');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Create ripple element
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple-effect');
+            
+            // Calculate ripple size and position
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            // Set ripple styles
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            
+            // Add ripple to button
+            this.appendChild(ripple);
+            
+            // Remove ripple after animation
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
 }
 
 // Function to add interactive animations
@@ -436,16 +471,28 @@ function addInteractiveAnimations() {
         });
     });
     
-    // Add focus effects to email input - commented out for now
-    /*
-    emailInput.addEventListener('focus', function() {
-        this.style.transform = 'scale(1.02)';
+    // Add enhanced focus effects to email input
+    const emailInputs = document.querySelectorAll('#emailInput, #mce-EMAIL');
+    emailInputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            // Add a subtle glow animation
+            this.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        });
+        
+        input.addEventListener('blur', function() {
+            // Reset transition
+            this.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        });
+        
+        // Add smooth typing animation
+        input.addEventListener('input', function() {
+            if (this.value.length > 0) {
+                this.style.transform = 'translateY(-1px)';
+            } else {
+                this.style.transform = 'translateY(0)';
+            }
+        });
     });
-    
-    emailInput.addEventListener('blur', function() {
-        this.style.transform = 'scale(1)';
-    });
-    */
 }
 
 // Add smooth scrolling for any future navigation
