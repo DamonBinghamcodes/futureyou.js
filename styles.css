@@ -1467,7 +1467,7 @@ body {
 /* Footer styling */
 .footer {
     position: absolute;
-    bottom: 2rem;
+    bottom: 0.5rem;
     text-align: center;
     width: 100%;
 }
@@ -1478,7 +1478,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .instagram-section {
