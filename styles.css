@@ -41,7 +41,7 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
-    background-color: rgba(232, 232, 232, 0.821);
+    background-color: rgba(232, 232, 232, 0.73);
     padding: 0.5rem 0;
 }
 
@@ -107,7 +107,7 @@ body {
 .time-number {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #92e692;
+    color: #000000;
     margin-bottom: 0.5rem;
 }
 
@@ -299,7 +299,7 @@ body {
     width: auto;
     min-width: 120px;
     padding: 1rem 1.4rem;
-    background: linear-gradient(135deg, rgba(0, 105, 44, 0.456), rgba(0, 255, 47, 0.495));
+    background-color: #92e692;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 12px;
     color: #000000;
@@ -351,7 +351,6 @@ body {
 
 .submit-btn:hover,
 #mc-embedded-subscribe:hover {
-    background: linear-gradient(135deg, rgba(0, 93, 39, 0.425)rgba(0, 250, 13, 0.541)8));
     border-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
                 0 0 0 1px rgba(255, 255, 255, 0.1);
@@ -1286,7 +1285,7 @@ body {
     gap: 0.5rem;
     padding: 0.6rem 0.8rem;
     background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 25px;
     color: #ffffff;
     text-decoration: none;
@@ -1314,7 +1313,7 @@ body {
     height: 32px;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid #00000079;
+    border: 2px solid #ffffff79;
     background: rgba(0, 255, 102, 0.1);
     flex-shrink: 0;
 }
