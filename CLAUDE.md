@@ -15,7 +15,7 @@ This is a "Coming Soon" landing page designed to build brand anticipation and ga
 ### ✅ Completed Features
 - **Landing Page Core**: Fully functional HTML/CSS/JS implementation
 - **Responsive Design**: Mobile-first approach with comprehensive breakpoints (280px to 1440px+)
-- **Countdown Timer**: JavaScript-powered countdown to October 31, 2025
+- **Countdown Timer**: JavaScript-powered countdown to March 3, 2026
 - **Progress Bar**: Animated progress tracking to launch date
 - **Email Collection**: Integrated Mailchimp embedded forms with Apple-inspired design
 - **Instagram Integration**: Two account links (@futureyou.rsrch, @futureyou.psd) with profile pictures
@@ -83,8 +83,8 @@ This is a "Coming Soon" landing page designed to build brand anticipation and ga
 ### 1. Hero Section
 - **Background**: Animated pulsing gradient (gradient-background.png)
 - **Brand Logo**: SVG-quality PNG with responsive sizing
-- **Countdown Timer**: Real-time countdown to October 31, 2025
-- **Progress Bar**: Animated progress tracking from July 15, 2025 start date
+- **Countdown Timer**: Real-time countdown to March 3, 2026
+- **Progress Bar**: Animated progress tracking from July 15, 2025 to March 3, 2026 launch date
 
 ### 2. Email Capture System
 - **Mailchimp Integration**: Embedded forms with server-side processing

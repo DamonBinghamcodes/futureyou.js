@@ -1,8 +1,8 @@
 // Script for FutureYou.js Landing Page
 // Handles countdown timer, progress bar, and email form functionality
 
-// Set the target launch date - October 31, 2025
-const targetDate = new Date('October 31, 2025 23:59:59').getTime();
+// Set the target launch date - March 3, 2026
+const targetDate = new Date('March 3, 2026 23:59:59').getTime();
 
 // Get DOM elements
 const daysElement = document.getElementById('days');
@@ -752,5 +752,5 @@ document.addEventListener('contextmenu', function(e) {
 
 // Console message for developers
 console.log('🚀 FUTUREYOU.js - Landing Page Loaded');
-console.log('Launch Date: October 31, 2025');
+console.log('Launch Date: March 3, 2026');
 console.log('Built with HTML, CSS, and JavaScript');
