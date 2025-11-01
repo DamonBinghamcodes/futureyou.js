@@ -37,12 +37,12 @@ body {
     background: transparent;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: relative;
     overflow: hidden;
     background-color: rgba(232, 232, 232, 0.73);
-    padding: 0.5rem 0;
+    padding: 1rem 0 0.5rem 0;
 }
 
 
@@ -62,27 +62,29 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     max-width: 800px;
     width: 100%;
+    flex: 1;
+    justify-content: center;
 }
 
 /* Brand logo/title */
 .brand-logo {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .brand-logo-img {
     max-width: 100%;
     height: auto;
-    width: 400px;
+    width: 300px;
 }
 
 
 
 /* Countdown timer styling */
 .countdown-container {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .countdown-timer {
@@ -120,7 +122,7 @@ body {
 
 /* Progress bar section */
 .progress-section {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     width: 100%;
     max-width: 400px;
 }
@@ -173,7 +175,7 @@ body {
 .email-section {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0rem;
     padding: 0 1rem;
     box-sizing: border-box;
     position: relative;
@@ -1109,9 +1111,8 @@ body {
 }
 
 .instagram-browser .footer {
-    position: relative !important;
-    bottom: auto !important;
-    margin-top: 1rem !important;
+    /* Footer positioning already relative in main styles */
+    margin-top: 0.5rem !important;
 }
 
 .instagram-browser .instagram-link {
@@ -1266,6 +1267,170 @@ body {
     }
 }
 
+/* ===== SCROLLING NEWSLINE BANNER ===== */
+
+.newsline-banner {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    border-top: 1px solid #92e692;
+    border-bottom: 1px solid #92e692;
+    overflow: hidden;
+    position: relative;
+    padding: 0.5rem 0;
+    backdrop-filter: blur(5px);
+    z-index: 10;
+}
+
+.newsline-track {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 15s linear infinite;
+    will-change: transform;
+}
+
+.newsline-text {
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #92e692;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding-right: 2rem;
+    animation: glitch 3s infinite;
+    display: inline-block;
+}
+
+/* Scrolling animation - moves exactly 50% to loop seamlessly */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Tech glitch effect */
+@keyframes glitch {
+    0%, 90%, 100% {
+        opacity: 1;
+        text-shadow:
+            0 0 5px rgba(146, 230, 146, 0.5),
+            0 0 10px rgba(146, 230, 146, 0.3);
+    }
+    92% {
+        opacity: 0.8;
+        text-shadow:
+            -2px 0 rgba(255, 0, 0, 0.5),
+            2px 0 rgba(0, 255, 255, 0.5),
+            0 0 10px rgba(146, 230, 146, 0.8);
+        transform: skew(-0.5deg);
+    }
+    94% {
+        opacity: 1;
+        text-shadow:
+            2px 0 rgba(255, 0, 0, 0.5),
+            -2px 0 rgba(0, 255, 255, 0.5),
+            0 0 15px rgba(146, 230, 146, 0.8);
+        transform: skew(0.5deg);
+    }
+    96% {
+        opacity: 0.9;
+        text-shadow:
+            0 0 5px rgba(146, 230, 146, 0.5),
+            0 0 10px rgba(146, 230, 146, 0.3);
+        transform: skew(0deg);
+    }
+}
+
+/* Random glitch on individual letters */
+.newsline-text::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    text-shadow: -2px 0 rgba(255, 0, 0, 0.7);
+    animation: glitch-slice 5s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.newsline-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    text-shadow: 2px 0 rgba(0, 255, 255, 0.7);
+    animation: glitch-slice 7s infinite reverse;
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch-slice {
+    0%, 95%, 100% {
+        transform: translate(0);
+    }
+    96% {
+        transform: translate(3px, 2px);
+    }
+    97% {
+        transform: translate(-2px, -1px);
+    }
+    98% {
+        transform: translate(2px, 1px);
+    }
+}
+
+/* Responsive newsline banner */
+@media (min-width: 481px) {
+    .newsline-text {
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .newsline-banner {
+        padding: 0.6rem 0;
+    }
+
+    .newsline-text {
+        font-size: 0.85rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .newsline-banner {
+        padding: 0.7rem 0;
+    }
+
+    .newsline-text {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 1440px) {
+    .newsline-banner {
+        padding: 0.8rem 0;
+    }
+
+    .newsline-text {
+        font-size: 1rem;
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .newsline-track {
+        animation: scroll 60s linear infinite;
+    }
+
+    .newsline-text {
+        animation: none;
+        text-shadow: 0 0 5px rgba(146, 230, 146, 0.5);
+    }
+
+    .newsline-text::before,
+    .newsline-text::after {
+        display: none;
+    }
+}
+
 /* ===== INSTAGRAM ACCOUNTS SECTION ===== */
 
 /* Mobile first - base styles - always horizontal */
@@ -1274,7 +1439,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
     margin: 0;
     padding: 0;
 }
@@ -1282,18 +1447,18 @@ body {
 .instagram-link {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 0.8rem;
+    gap: 0.3rem;
+    padding: 0.4rem 0.6rem;
     background: rgba(0, 0, 0, 0.6);
     border: 1px solid rgb(255, 255, 255);
-    border-radius: 25px;
+    border-radius: 20px;
     color: #ffffff;
     text-decoration: none;
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     font-weight: 500;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
-    min-width: 140px;
+    min-width: 100px;
     justify-content: center;
     white-space: nowrap;
 }
@@ -1309,11 +1474,11 @@ body {
 /* Profile picture container */
 .profile-pic {
     position: relative;
-    width: 32px;
-    height: 32px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid #ffffff79;
+    border: 1.5px solid #ffffff79;
     background: rgba(0, 255, 102, 0.1);
     flex-shrink: 0;
 }
@@ -1346,8 +1511,8 @@ body {
 }
 
 .instagram-icon {
-    width: 20px;
-    height: 20px;
+    width: 14px;
+    height: 14px;
     color: #92e692;
     transition: all 0.3s ease;
     flex-shrink: 0;
@@ -1373,103 +1538,105 @@ body {
 @media (min-width: 481px) {
     .instagram-accounts {
         flex-direction: row;
-        gap: 1.5rem;
+        gap: 0.8rem;
         justify-content: center;
     }
-    
+
     .instagram-link {
-        min-width: 180px;
-        font-size: 0.9rem;
-        padding: 1rem 1.5rem;
+        min-width: 120px;
+        font-size: 0.7rem;
+        padding: 0.5rem 0.8rem;
     }
-    
+
     .profile-pic {
-        width: 36px;
-        height: 36px;
-    }
-    
-    .instagram-icon {
         width: 22px;
         height: 22px;
+    }
+
+    .instagram-icon {
+        width: 15px;
+        height: 15px;
     }
 }
 
 @media (min-width: 768px) {
     .instagram-accounts {
-        gap: 2rem;
+        gap: 1rem;
     }
-    
+
     .instagram-link {
-        min-width: 200px;
-        font-size: 1rem;
-        padding: 1.2rem 1.8rem;
-        border-radius: 30px;
+        min-width: 130px;
+        font-size: 0.75rem;
+        padding: 0.5rem 0.9rem;
+        border-radius: 22px;
     }
-    
+
     .profile-pic {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .instagram-icon {
         width: 24px;
         height: 24px;
+    }
+
+    .instagram-icon {
+        width: 16px;
+        height: 16px;
     }
 }
 
 @media (min-width: 1024px) {
     .instagram-accounts {
-        gap: 2.5rem;
+        gap: 1.2rem;
     }
-    
+
     .instagram-link {
-        min-width: 220px;
-        font-size: 1.1rem;
-        padding: 1.3rem 2rem;
+        min-width: 140px;
+        font-size: 0.8rem;
+        padding: 0.6rem 1rem;
     }
-    
+
     .profile-pic {
-        width: 44px;
-        height: 44px;
-        border-width: 2.5px;
-    }
-    
-    .instagram-icon {
         width: 26px;
         height: 26px;
+        border-width: 1.5px;
+    }
+
+    .instagram-icon {
+        width: 17px;
+        height: 17px;
     }
 }
 
 @media (min-width: 1440px) {
     .instagram-accounts {
-        gap: 3rem;
+        gap: 1.5rem;
     }
-    
+
     .instagram-link {
-        min-width: 240px;
-        font-size: 1.2rem;
-        padding: 1.5rem 2.5rem;
-        border-radius: 35px;
+        min-width: 150px;
+        font-size: 0.85rem;
+        padding: 0.6rem 1.1rem;
+        border-radius: 24px;
     }
-    
+
     .profile-pic {
-        width: 48px;
-        height: 48px;
-        border-width: 3px;
-    }
-    
-    .instagram-icon {
         width: 28px;
         height: 28px;
+        border-width: 2px;
+    }
+
+    .instagram-icon {
+        width: 18px;
+        height: 18px;
     }
 }
 
 /* Footer styling */
 .footer {
-    position: absolute;
-    bottom: 1rem;
+    position: relative;
+    margin-top: auto;
+    padding: 0.5rem 0;
     text-align: center;
     width: 100%;
+    flex-shrink: 0;
 }
 
 /* Social section styling */
@@ -1487,42 +1654,7 @@ body {
     justify-content: center;
 }
 
-.instagram-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.577);
-    border-radius: 20px;
-    background: rgba(0, 0, 0, 0.558);
-}
-
-.instagram-link:hover {
-    color: #00ff80;
-    border-color: #00ff66;
-    background: rgba(0, 255, 102, 0.1);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 255, 102, 0.2);
-}
-
-.instagram-icon {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
-}
-
-.instagram-link:hover .instagram-icon {
-    transform: scale(1.1);
-}
-
-.instagram-text {
-    letter-spacing: 0.05em;
-}
+/* Duplicate styles removed - see main Instagram section above */
 
 /* Follower count styling */
 .follower-count {
@@ -1563,7 +1695,7 @@ body {
     }
     
     .brand-logo-img {
-        width: 500px;
+        width: 350px;
         margin-bottom: 4rem;
     }
     
@@ -1600,15 +1732,7 @@ body {
         font-size: 1.1rem;
     }
     
-    .instagram-link {
-        font-size: 1rem;
-        padding: 0.7rem 1.3rem;
-    }
-    
-    .instagram-icon {
-        width: 22px;
-        height: 22px;
-    }
+    /* Instagram link styles moved to main section */
     
     .follower-count {
         font-size: 0.95rem;
@@ -1627,7 +1751,7 @@ body {
     }
     
     .brand-logo-img {
-        width: 450px;
+        width: 320px;
     }
     
     .countdown-timer {
@@ -1660,7 +1784,7 @@ body {
     }
     
     .brand-logo-img {
-        width: 400px;
+        width: 300px;
     }
     
     .countdown-timer {
@@ -1689,7 +1813,7 @@ body {
     }
     
     .brand-logo-img {
-        width: 350px;
+        width: 280px;
         margin-bottom: 2.5rem;
     }
     
@@ -1723,9 +1847,7 @@ body {
         min-width: 35px;
     }
     
-    .footer {
-        bottom: 1.5rem;
-    }
+    /* Footer positioning handled by flex layout */
 }
 
 /* Large Mobile (Landscape) - 481px to 767px */
@@ -1736,7 +1858,7 @@ body {
     }
     
     .brand-logo-img {
-        width: 300px;
+        width: 240px;
         margin-bottom: 2rem;
     }
     
@@ -1773,9 +1895,7 @@ body {
         min-width: 30px;
     }
     
-    .footer {
-        bottom: 1rem;
-    }
+    /* Footer positioning handled by flex layout */
     
     .footer-text {
         font-size: 0.85rem;
@@ -1790,7 +1910,7 @@ body {
     }
     
     .brand-logo-img {
-        width: 250px;
+        width: 200px;
         margin-bottom: 1.5rem;
     }
     
@@ -1841,23 +1961,13 @@ body {
         font-size: 0.8rem;
     }
     
-    .footer {
-        bottom: 0.5rem;
-    }
+    /* Footer positioning handled by flex layout */
     
     .footer-text {
         font-size: 0.8rem;
     }
     
-    .instagram-link {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-    }
-    
-    .instagram-icon {
-        width: 18px;
-        height: 18px;
-    }
+    /* Instagram link styles moved to main section */
     
     .follower-count {
         font-size: 0.75rem;
@@ -1875,7 +1985,7 @@ body {
     }
     
     .brand-logo-img {
-        width: 200px;
+        width: 160px;
         margin-bottom: 1.2rem;
     }
     
@@ -1918,15 +2028,7 @@ body {
         font-size: 0.75rem;
     }
     
-    .instagram-link {
-        font-size: 0.75rem;
-        padding: 0.3rem 0.6rem;
-    }
-    
-    .instagram-icon {
-        width: 16px;
-        height: 16px;
-    }
+    /* Instagram link styles moved to main section */
     
     .follower-count {
         font-size: 0.7rem;
@@ -1946,7 +2048,7 @@ body {
     }
     
     .brand-logo-img {
-        width: 280px;
+        width: 220px;
         margin-bottom: 1rem;
     }
     
@@ -1958,9 +2060,7 @@ body {
         margin-bottom: 1.5rem;
     }
     
-    .footer {
-        bottom: 0.5rem;
-    }
+    /* Footer positioning handled by flex layout */
 }
 
 /* Very small height devices */
@@ -1970,7 +2070,7 @@ body {
     }
     
     .brand-logo-img {
-        width: 200px;
+        width: 160px;
         margin-bottom: 0.8rem;
     }
     

@@ -14,44 +14,58 @@ This is a "Coming Soon" landing page designed to build brand anticipation and ga
 
 ### ✅ Completed Features
 - **Landing Page Core**: Fully functional HTML/CSS/JS implementation
+- **Scrolling Newsline Banner**: Tech-glitch styled infinite scrolling banner with classified messaging
 - **Responsive Design**: Mobile-first approach with comprehensive breakpoints (280px to 1440px+)
 - **Countdown Timer**: JavaScript-powered countdown to March 3, 2026
-- **Progress Bar**: Animated progress tracking to launch date
+- **Progress Bar**: Animated progress tracking to launch date (percentage only)
 - **Email Collection**: Integrated Mailchimp embedded forms with Apple-inspired design
-- **Instagram Integration**: Two account links (@futureyou.rsrch, @futureyou.psd) with profile pictures
+- **Instagram Integration**: Two account links (@futureyou.rsrchdpt, @futureyou.psd) with profile pictures
 - **Instagram Browser Compatibility**: Specialized fixes for Instagram's in-app browser
 - **iOS Optimizations**: Safari and WebKit specific enhancements
 - **Background Animation**: Pulsing gradient background effect
 
 ### 🎨 Design Implementation
 - **Visual Theme**: Neon green (#92e692) on gradient background
+- **Brand Logo**: Green FY tree logo (futureyou-logo-green.png)
 - **Apple-Inspired Email Form**: Glass-morphism, blur effects, cubic-bezier animations
-- **Professional Typography**: -apple-system font stack
-- **Responsive Instagram Links**: Profile pictures, icons, and handles
-- **Optimized Spacing**: Compact layout fitting single screen without scrolling
+- **Professional Typography**: -apple-system font stack with Courier New for newsline
+- **Compact Instagram Links**: Minimal, optimized sizing (50-70% smaller than original)
+- **Tech Glitch Effects**: RGB split, chromatic aberration, and neon glow effects
+- **Optimized Spacing**: Flexbox layout preventing overlap, footer anchored at bottom
 
 ## Technical Architecture
 
 ### Current Tech Stack
 - **Frontend**: Vanilla HTML5, CSS3, JavaScript (ES6+)
 - **Email Backend**: Mailchimp embedded forms integration
-- **Styling**: Mobile-first responsive CSS with extensive media queries
+- **Styling**: Mobile-first responsive CSS with extensive media queries (2000+ lines)
 - **Animations**: CSS animations with reduced-motion accessibility support
+- **Layout**: Flexbox with space-between for proper footer positioning
 
 ### Key Files Structure
 ```
 ├── index.html          # Main HTML structure with Mailchimp integration
-├── styles.css          # Comprehensive responsive styling (2000+ lines)
+├── styles.css          # Comprehensive responsive styling (2100+ lines)
 ├── script.js           # JavaScript functionality and Instagram browser fixes
 ├── public/
-│   ├── gradient-background.png  # Animated background image
-│   ├── futureyou-black.png     # Brand logo
-│   ├── rsrch-profile.jpg       # Instagram profile picture
-│   └── psd-profile.jpg         # Instagram profile picture
+│   ├── gradient-background.png      # Animated background image
+│   ├── futureyou-logo-green.png    # Main brand logo (green FY tree)
+│   ├── FutureYouRSRCHDPT-LOGO.gif  # Animated logo variant
+│   ├── IMG_2890.JPG                # Instagram profile picture
+│   └── 278C98B4-34FB-49D4-BA76-EB8330E0E921.PNG  # Instagram profile picture
 └── CLAUDE.md           # This documentation file
 ```
 
 ## Advanced Features Implemented
+
+### Scrolling Newsline Banner (NEW)
+- **Infinite Scroll**: Seamless 360-degree loop with no visible reset
+- **Tech Glitch Effects**: RGB chromatic aberration, opacity flickers, skew distortion
+- **Message**: "CLASSIFIED :: ACCESS RESTRICTED :: PASSCODE REQUIRED :: JOIN THE WAITLIST :: UNLOCK YOUR FUTURE ::"
+- **Styling**: Monospace font, neon green text, black semi-transparent background with green borders
+- **Speed**: 15-second loop for fast scrolling
+- **Accessibility**: Reduced motion support (slower scroll, no glitch effects)
+- **Implementation**: 4 text copies with translateX(-50%) for seamless looping
 
 ### Instagram Browser Compatibility
 - **Detection**: JavaScript function to identify Instagram's in-app browser
@@ -73,31 +87,43 @@ This is a "Coming Soon" landing page designed to build brand anticipation and ga
 
 ## Brand Identity & Design Direction
 
-- **Visual Theme**: Neon green gradient (#92e692) on dark background
-- **Aesthetic**: Minimal, high-performance, Apple-inspired streetwear
-- **Tone**: Cryptic, exclusive, future-focused with "early access" messaging
-- **Target Audience**: Fitness/lifestyle enthusiasts who appreciate premium aesthetics
+- **Visual Theme**: Neon green (#92e692) on gradient background
+- **Logo**: Green FY tree with bonsai aesthetic
+- **Aesthetic**: Minimal, high-performance, tech-glitch, classified/mysterious
+- **Tone**: Cryptic, exclusive, future-focused with "passcode required" messaging
+- **Target Audience**: Fitness/lifestyle enthusiasts who appreciate premium aesthetics and exclusivity
 
 ## Key Components Detail
 
-### 1. Hero Section
-- **Background**: Animated pulsing gradient (gradient-background.png)
-- **Brand Logo**: SVG-quality PNG with responsive sizing
-- **Countdown Timer**: Real-time countdown to March 3, 2026
-- **Progress Bar**: Animated progress tracking from July 15, 2025 to March 3, 2026 launch date
+### 1. Scrolling Newsline Banner
+- **Position**: Top of page, full-width
+- **Animations**:
+  - Scroll: 15s linear infinite
+  - Glitch: 3s infinite with RGB split
+  - Slice glitch: 5s/7s layered effects
+- **Typography**: Courier New monospace, uppercase, wide letter-spacing
+- **Colors**: Neon green (#92e692) on rgba(0,0,0,0.85)
 
-### 2. Email Capture System
+### 2. Hero Section
+- **Background**: Animated pulsing gradient background
+- **Brand Logo**: Green FY tree logo, responsive sizing (300px base, down to 160px mobile)
+- **Countdown Timer**: Real-time countdown to March 3, 2026
+- **Progress Bar**: Animated progress tracking with percentage display only
+
+### 3. Email Capture System
 - **Mailchimp Integration**: Embedded forms with server-side processing
 - **Apple-Style Design**: Glass-morphism, blur effects, smooth animations
-- **Text**: "Enter your email below to unlock early access. Access Code will be sent in October."
-- **Responsive Layout**: Horizontal on desktop, stacked on mobile
+- **Responsive Layout**: Horizontal on desktop, vertical on mobile
 - **Success/Error Handling**: Styled feedback messages
 
-### 3. Social Media Footer
-- **Instagram Accounts**: @futureyou.rsrch and @futureyou.psd
-- **Profile Integration**: Real profile pictures with fallback avatars
+### 4. Social Media Footer
+- **Instagram Accounts**: @futureyou.rsrchdpt and @futureyou.psd
+- **Profile Integration**: Green FY tree logo for rsrchdpt, custom profile pic for psd
 - **External Link Handling**: Instagram app deep-linking with browser fallbacks
-- **Responsive Sizing**: Progressive scaling from 280px to 1440px+ screens
+- **Optimized Sizing**:
+  - Base mobile: 100px min-width, 0.65rem font, 20px profile pics
+  - Desktop (1440px+): 150px min-width, 0.85rem font, 28px profile pics
+- **Footer Positioning**: Flexbox with margin-top: auto, stays at bottom without overlap
 
 ## Development Guidelines
 
@@ -112,6 +138,7 @@ This is a "Coming Soon" landing page designed to build brand anticipation and ga
 - **CSS Efficiency**: Optimized selectors and consolidated styles
 - **JavaScript**: Minimal DOM manipulation with efficient event handling
 - **Loading**: Fade-in animation with preload considerations
+- **will-change**: Applied to animated elements for GPU acceleration
 
 ### Browser Compatibility
 - **Modern Browsers**: Chrome, Safari, Firefox, Edge (ES6+ support)
@@ -121,24 +148,58 @@ This is a "Coming Soon" landing page designed to build brand anticipation and ga
 
 ## Recent Development Work
 
-### Instagram Browser Fixes (Latest Session)
+### November 2025 Session - Major Updates
+1. **Logo Update**:
+   - Changed from futureyou-black.png to futureyou-logo-green.png
+   - Updated brand logo and @futureyou.rsrchdpt profile picture
+   - Reduced logo sizes across all breakpoints (25% smaller)
+
+2. **Instagram Links Optimization**:
+   - Reduced sizes by 50-70% across all breakpoints
+   - Base: 100px min-width (from 140px)
+   - Profile pics: 20px (from 32px)
+   - Icons: 14px (from 20px)
+   - Gap: 0.5rem (from 1rem)
+
+3. **Footer Positioning Fix**:
+   - Changed from position: absolute to relative
+   - Implemented flexbox layout with space-between
+   - Added margin-top: auto to footer
+   - Eliminated all overlap issues
+
+4. **Spacing Optimization**:
+   - Brand logo margin: 1rem (from 2rem)
+   - Countdown margin: 1rem (from 2rem)
+   - Progress section margin: 1rem (from 1.5rem)
+   - Email section margin: 0rem (from 0.5rem)
+   - Removed duplicate CSS rules
+
+5. **Scrolling Newsline Banner** (NEW FEATURE):
+   - Added infinite scrolling tech-glitch banner
+   - Message: "CLASSIFIED :: ACCESS RESTRICTED :: PASSCODE REQUIRED :: JOIN THE WAITLIST :: UNLOCK YOUR FUTURE ::"
+   - 15-second scroll loop with seamless 360-degree looping
+   - RGB chromatic aberration glitch effects
+   - 4 text copies for perfect seamless loop
+   - Fully responsive with reduced-motion support
+
+6. **Progress Bar Text Removal**:
+   - Removed descriptive text below progress bar
+   - Now shows percentage only for cleaner look
+
+### Previous Development Sessions
+
+#### Instagram Browser Fixes
 - **Issue**: Links not working in Instagram's in-app browser
 - **Solution**: Multi-method external link opening with deep-linking
 - **Cursor Positioning**: Fixed email input cursor appearing in middle of placeholder
 - **Layout Optimization**: Reduced spacing between email form and Instagram links
 - **Responsive Refinement**: Enhanced media queries for social link sizing
 
-### Apple-Style Email Form Enhancement
+#### Apple-Style Email Form Enhancement
 - **Design Upgrade**: From basic form to Apple-inspired glass-morphism
 - **Animation System**: Cubic-bezier transitions and hover effects
 - **Input Management**: Dynamic text alignment and focus states
 - **Mailchimp Integration**: Seamless server-side email processing
-
-### Spacing and Layout Optimization
-- **Compact Design**: All content fits on single screen without scrolling
-- **Gap Reduction**: Minimized space between email form and Instagram links
-- **Responsive Scaling**: Progressive sizing across all device types
-- **Visual Hierarchy**: Balanced spacing maintaining design aesthetics
 
 ## Deployment Ready Features
 
@@ -147,12 +208,14 @@ This is a "Coming Soon" landing page designed to build brand anticipation and ga
 - **Error Handling**: Graceful fallbacks for all external dependencies
 - **Performance**: Optimized for fast loading on all devices
 - **SEO Ready**: Proper meta tags and semantic HTML structure
+- **Animation Performance**: GPU-accelerated with will-change properties
 
 ### Quality Assurance Completed
 - **Cross-Browser Testing**: Verified across major browsers
 - **Device Testing**: Tested on various screen sizes and orientations
 - **Instagram Compatibility**: Verified link functionality in Instagram browser
-- **Accessibility**: Keyboard navigation and screen reader support
+- **Accessibility**: Keyboard navigation, screen reader support, reduced-motion
+- **Layout Stability**: No content overlap, footer anchored properly
 
 ## Future Enhancement Opportunities
 
@@ -162,6 +225,7 @@ This is a "Coming Soon" landing page designed to build brand anticipation and ga
 - **A/B Testing**: Multiple design variants for optimization
 - **Social Proof**: Real-time follower count integration
 - **Progressive Web App**: Offline capability and app-like experience
+- **Dynamic Newsline**: JavaScript-powered message rotation
 
 ### Technical Debt
 - **CSS Optimization**: Consolidate similar responsive rules
@@ -171,6 +235,14 @@ This is a "Coming Soon" landing page designed to build brand anticipation and ga
 
 ## Notes for Developers
 
+### Working with the Newsline Banner
+- Banner positioned at top of main-container, before hero section
+- 4 identical text copies required for seamless 360-degree loop
+- Animation translateX(-50%) moves exactly 2 copies (half the track)
+- When animation resets, copies 3-4 appear where 1-2 started
+- Glitch effects use pseudo-elements (::before, ::after) for layered RGB split
+- Reduced-motion users get slower scroll (60s) with no glitch effects
+
 ### Working with Instagram Browser
 - Always test Instagram link functionality in actual Instagram app
 - Use the `isInstagramBrowser()` detection function for conditional logic
@@ -179,8 +251,8 @@ This is a "Coming Soon" landing page designed to build brand anticipation and ga
 
 ### Email Form Customization
 - Mailchimp form ID and action URL are configured in index.html
-- Apple-style animations are defined in styles.css (lines 179-1170)
-- Input state management is handled in script.js (lines 616-725)
+- Apple-style animations defined in styles.css
+- Input state management handled in script.js
 - Responsive breakpoints ensure proper display on all devices
 
 ### Responsive Design Maintenance
@@ -188,5 +260,12 @@ This is a "Coming Soon" landing page designed to build brand anticipation and ga
 - Use progressive enhancement for larger screens
 - Test all breakpoints, especially 375px, 390px, and 430px for mobile
 - Instagram browser requires additional CSS overrides
+- Footer uses flexbox, not absolute positioning
 
-This project represents a production-ready landing page with advanced responsive design, Instagram browser compatibility, and professional email collection system integrated with Mailchimp.
+### Layout Architecture
+- main-container: display: flex, flex-direction: column, justify-content: space-between
+- hero-section: flex: 1, centers content vertically
+- footer: position: relative, margin-top: auto, anchors to bottom
+- This ensures content never overlaps and footer always stays at bottom
+
+This project represents a production-ready landing page with advanced responsive design, tech-glitch aesthetics, infinite scrolling banner, Instagram browser compatibility, and professional email collection system integrated with Mailchimp.
