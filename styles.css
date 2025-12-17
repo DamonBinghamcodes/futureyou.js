@@ -146,11 +146,11 @@ body {
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #009700, #00973c);
+    background: linear-gradient(90deg, #0081fb, #0081fb);
     border-radius: 2.6px;
     width: 0%;
     transition: width 0.3s ease;
-    box-shadow: 0 0 6.5px #33cc57;
+    box-shadow: 0 0 6.5px #0081fb;
 }
 
 .progress-percentage {
@@ -171,103 +171,98 @@ body {
     text-align: center;
 }
 
-/* ===== EMAIL SIGNUP SECTION - APPLE INSPIRED DESIGN ===== */
+/* ===== EMAIL SIGNUP SECTION - WINDOWS 2000's PC THEME ===== */
 
-/* Base mobile styles (391px and up) */
+/* Base mobile styles - Windows Retro */
 .email-section {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 0rem;
-    padding: 0 0.49rem;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
     box-sizing: border-box;
     position: relative;
 }
 
 .email-prompt {
-    color: rgba(0, 0, 0, 0.9);
-    margin-bottom: 0.49rem;
-    font-size: 0.49rem;
-    font-weight: 400;
+    color: #000080;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 700;
     text-align: center;
     line-height: 1.5;
-    letter-spacing: -0.01em;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: 0;
+    font-family: Tahoma, "MS Sans Serif", Verdana, sans-serif;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
 }
 
 .email-form {
     display: flex;
-    flex-direction: row;
-    gap: 0.196rem;
-    margin-bottom: 0.3675rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
     width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
     position: relative;
     align-items: stretch;
     justify-content: center;
+    background: #d4d0c8;
+    padding: 1rem;
+    border: 2px outset #ffffff;
+    box-shadow: inset -1px -1px 0px #000000, inset 1px 1px 0px #ffffff;
 }
 
-/* Apple-inspired input styling */
+/* Windows 2000's input styling - Inset 3D effect */
 #emailInput,
 #mce-EMAIL {
-    flex: 1;
-    min-width: 0;
-    padding: 0.245rem 0.294rem;
-    background: rgba(0, 0, 0, 0.18);
-    border: 1px solid rgba(0, 0, 0, 0.276);
-    border-radius: 2.94px;
-    color: #020202;
-    font-size: 3.92px; /* Prevents iOS zoom */
+    width: 100%;
+    padding: 0.5rem 0.65rem;
+    background: #ffffff;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #7f7f7f #ffffff #ffffff #7f7f7f;
+    border-radius: 0;
+    color: #000000;
+    font-size: 16px; /* Prevents iOS zoom */
     font-weight: 400;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    transition: background 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                border-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-family: Tahoma, "MS Sans Serif", Verdana, sans-serif;
+    transition: none;
     box-sizing: border-box;
     -webkit-appearance: none;
     appearance: none;
-    backdrop-filter: blur(4.9px);
-    -webkit-backdrop-filter: blur(4.9px);
     position: relative;
-    text-align: center;
+    text-align: left;
     direction: ltr;
     z-index: 1;
+    box-shadow: inset -1px -1px 0px #d4d0c8, inset 1px 1px 0px #000000, inset -2px -2px 0px #ffffff, inset 2px 2px 0px #808080;
     /* iOS specific fixes */
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
-    /* Fix iOS zoom on focus */
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
 }
 
 #emailInput:focus,
 #mce-EMAIL:focus {
-    outline: none;
-    border-color: rgba(0, 0, 0, 0.3);
-    background: rgba(0, 0, 0, 0.164);
-    box-shadow: 0 0 0 1.96px rgba(0, 0, 0, 0.06),
-                0 3.92px 15.68px rgba(0, 0, 0, 0.3);
-    transform: translateY(-0.98px);
+    outline: 1px dotted #000000;
+    outline-offset: -3px;
+    background: #ffffff;
+    box-shadow: inset -1px -1px 0px #d4d0c8, inset 1px 1px 0px #000000, inset -2px -2px 0px #ffffff, inset 2px 2px 0px #808080;
     text-align: left !important;
-    transition: border-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                background 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 #emailInput::placeholder,
 #mce-EMAIL::placeholder {
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 0.49rem;
+    color: #808080;
+    font-size: 16px;
     font-weight: 400;
-    transition: all 0.3s ease;
+    font-family: Tahoma, "MS Sans Serif", Verdana, sans-serif;
 }
 
 #emailInput:focus::placeholder,
 #mce-EMAIL:focus::placeholder {
-    color: rgba(0, 0, 0, 0.4);
-    opacity: 0.8;
+    color: #a0a0a0;
 }
 
 /* Dynamic text alignment classes */
@@ -297,588 +292,533 @@ body {
     caret-color: #000000;
 }
 
-/* Apple-inspired submit button */
+/* Windows 2000's classic button - Raised 3D effect */
 .submit-btn,
 #mc-embedded-subscribe {
-    width: auto;
-    min-width: 29.4px;
-    padding: 0.245rem 0.343rem;
-    background-color: #000000;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 2.94px;
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 3.43px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(180deg, #dfdfdf 0%, #d4d0c8 45%, #c0c0c0 50%, #b0b0b0 100%);
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    border-radius: 0;
+    color: #000000;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: Tahoma, "MS Sans Serif", Verdana, sans-serif;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    letter-spacing: -0.01em;
+    transition: none;
+    letter-spacing: 0;
+    text-transform: none;
     -webkit-appearance: none;
     appearance: none;
-    backdrop-filter: blur(4.9px);
-    -webkit-backdrop-filter: blur(4.9px);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     z-index: 1;
-    flex-shrink: 0;
     white-space: nowrap;
     box-sizing: border-box;
+    box-shadow: inset -1px -1px 0px #808080, inset 1px 1px 0px #ffffff, inset -2px -2px 0px #000000, inset 2px 2px 0px #dfdfdf;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.7);
     /* iOS specific fixes */
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
-    /* Fix iOS rendering */
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
-    /* Prevent iOS button styling */
-    -webkit-border-radius: 2.94px;
 }
 
 .submit-btn::before,
 #mc-embedded-subscribe::before {
     content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.6s ease;
-    z-index: -1;
+    display: none;
 }
 
 .submit-btn:hover::before,
 #mc-embedded-subscribe:hover::before {
-    left: 100%;
+    display: none;
 }
 
 .submit-btn:hover,
 #mc-embedded-subscribe:hover {
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 1.96px 7.84px rgba(0, 0, 0, 0.4),
-                0 0 0 1px rgba(255, 255, 255, 0.1);
-    transform: translateY(-0.49px);
+    background: linear-gradient(180deg, #e8e8e8 0%, #dfdfdf 45%, #c8c8c8 50%, #b8b8b8 100%);
+    border-color: #ffffff #000000 #000000 #ffffff;
+    box-shadow: inset -1px -1px 0px #808080, inset 1px 1px 0px #ffffff, inset -2px -2px 0px #000000, inset 2px 2px 0px #e8e8e8;
 }
 
 .submit-btn:active,
 #mc-embedded-subscribe:active {
-    transform: translateY(0px);
-    box-shadow: 0 1.96px 7.84px rgba(0, 0, 0, 0.3);
+    /* Pressed button effect - inverted borders */
+    border-color: #000000 #ffffff #ffffff #000000;
+    box-shadow: inset 1px 1px 0px #000000, inset -1px -1px 0px #ffffff, inset 2px 2px 0px #808080, inset -2px -2px 0px #d4d0c8;
+    background: linear-gradient(180deg, #b0b0b0 0%, #c0c0c0 50%, #d4d0c8 55%, #dfdfdf 100%);
+    padding-top: 0.55rem;
+    padding-left: 1.05rem;
 }
 
-/* Apple-style floating label animation */
+/* Windows notification style */
 .email-form {
     position: relative;
 }
 
 .email-form::after {
-    content: '';
-    position: absolute;
-    bottom: -1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: width 0.6s ease;
+    display: none;
 }
 
 .email-form:focus-within::after {
-    width: 100%;
+    display: none;
 }
 
-/* Success and error messages - Apple style */
-.success-message, 
+/* Success and error messages - Windows 2000's dialog style */
+.success-message,
 .error-message {
-    font-weight: 500;
+    font-weight: 400;
     opacity: 0;
-    transform: translateY(20px) scale(0.95);
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    text-align: center;
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    letter-spacing: -0.01em;
+    transition: opacity 0.2s ease;
+    text-align: left;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 0;
+    font-family: Tahoma, "MS Sans Serif", Verdana, sans-serif;
+    letter-spacing: 0;
+    background: #ece9d8;
+    border: 2px solid;
+    box-shadow: inset -1px -1px 0px #000000, inset 1px 1px 0px #ffffff;
 }
 
 .success-message {
-    color: rgba(52, 199, 89, 1);
-    background: rgba(52, 199, 89, 0.1);
-    border: 1px solid rgba(52, 199, 89, 0.2);
-    box-shadow: 0 8px 32px rgba(52, 199, 89, 0.1);
+    color: #000000;
+    background: #ece9d8;
+    border-color: #ffffff #808080 #808080 #ffffff;
+}
+
+.success-message::before {
+    content: 'ℹ️ ';
+    margin-right: 0.5rem;
 }
 
 .error-message {
-    color: rgba(255, 69, 58, 1);
-    background: rgba(255, 69, 58, 0.1);
-    border: 1px solid rgba(255, 69, 58, 0.2);
-    box-shadow: 0 8px 32px rgba(255, 69, 58, 0.1);
+    color: #000000;
+    background: #ece9d8;
+    border-color: #ffffff #808080 #808080 #ffffff;
 }
 
-.success-message.show, 
+.error-message::before {
+    content: '⚠️ ';
+    margin-right: 0.5rem;
+}
+
+.success-message.show,
 .error-message.show {
     opacity: 1;
-    transform: translateY(0) scale(1);
 }
 
-/* Apple-style ripple effect */
+/* Windows classic - no ripple effect */
 .submit-btn,
 #mc-embedded-subscribe {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
-@keyframes ripple {
-    0% {
-        transform: scale(0);
-        opacity: 0.6;
-    }
-    100% {
-        transform: scale(2);
-        opacity: 0;
-    }
+@keyframes none {
+    /* No animations for Windows classic theme */
 }
 
 .ripple-effect {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    pointer-events: none;
-    animation: ripple 0.6s ease-out;
+    display: none;
 }
 
-/* ===== RESPONSIVE EMAIL SIGNUP - APPLE STYLE ===== */
+/* ===== RESPONSIVE EMAIL SIGNUP - WINDOWS RETRO THEME ===== */
 
-/* Large Mobile (Landscape) - 481px to 767px */
+/* Large Mobile (Landscape) - 481px and up */
 @media (min-width: 481px) {
     .email-section {
-        max-width: 315px;
+        max-width: 450px;
         margin-left: auto;
         margin-right: auto;
-        padding: 0;
+        padding: 0 1rem;
     }
 
     .email-prompt {
-        font-size: 0.77rem;
-        margin-bottom: 1.54rem;
+        font-size: 0.95rem;
+        margin-bottom: 0.85rem;
     }
 
     .email-form {
-        gap: 0.7rem;
+        gap: 0.85rem;
+        max-width: 450px;
+        padding: 1.15rem;
     }
 
     #emailInput,
     #mce-EMAIL {
-        padding: 0.7rem 0.91rem;
-        font-size: 0.7rem;
+        padding: 0.6rem 0.75rem;
+        font-size: 16px;
     }
 
     .submit-btn,
     #mc-embedded-subscribe {
-        min-width: 98px;
-        padding: 0.7rem 1.4rem;
-        font-size: 0.7rem;
+        padding: 0.6rem 1.15rem;
+        font-size: 16px;
     }
 
     .success-message,
     .error-message {
-        font-size: 0.665rem;
-        margin-top: 0.84rem;
+        font-size: 0.9rem;
+        margin-top: 0.85rem;
     }
 }
 
-/* Tablets (Portrait) - 768px to 1023px */
+/* Tablets (Portrait) - 768px and up */
 @media (min-width: 768px) {
     .email-section {
-        max-width: 336px;
-        margin-bottom: 2.45rem;
+        max-width: 500px;
+        margin-bottom: 1.5rem;
     }
 
     .email-prompt {
-        font-size: 0.84rem;
-        margin-bottom: 1.75rem;
-        font-weight: 300;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
     }
 
     .email-form {
-        gap: 0.84rem;
+        gap: 1rem;
         flex-direction: row;
+        max-width: 500px;
+        padding: 1.25rem;
     }
 
     #emailInput,
     #mce-EMAIL {
-        padding: 0.84rem 0.98rem;
-        font-size: 0.77rem;
-        border-radius: 9.8px;
+        padding: 0.65rem 0.85rem;
+        font-size: 16px;
+        flex: 2;
     }
 
     .submit-btn,
     #mc-embedded-subscribe {
-        min-width: 112px;
-        padding: 0.84rem 1.4rem;
-        font-size: 0.77rem;
-        border-radius: 9.8px;
+        flex: 1;
+        min-width: 140px;
+        padding: 0.65rem 1.5rem;
+        font-size: 15px;
     }
 
     .success-message,
     .error-message {
-        font-size: 0.7rem;
-        margin-top: 1.05rem;
-        padding: 0.84rem 1.26rem;
-        border-radius: 9.8px;
+        font-size: 0.95rem;
+        margin-top: 1rem;
+        padding: 0.75rem 1rem;
     }
 }
 
-/* Landscape Tablets and Small Laptops - 900px */
+/* Landscape Tablets and Small Laptops - 900px and up */
 @media (min-width: 900px) {
     .email-section {
-        max-width: 350px;
-        margin-bottom: 2.6rem;
+        max-width: 540px;
+        margin-bottom: 1.75rem;
     }
 
     .email-prompt {
-        font-size: 0.88rem;
-        margin-bottom: 1.85rem;
-        font-weight: 300;
+        font-size: 1.05rem;
+        margin-bottom: 1.15rem;
+        font-weight: 700;
     }
 
     .email-form {
-        gap: 0.95rem;
+        gap: 1.1rem;
         flex-direction: row;
+        max-width: 540px;
+        padding: 1.35rem;
     }
 
     #emailInput,
     #mce-EMAIL {
-        padding: 0.88rem 1.05rem;
-        font-size: 0.77rem;
-        border-radius: 10.5px;
+        padding: 0.7rem 0.9rem;
+        font-size: 16px;
+        flex: 2;
     }
 
     .submit-btn,
     #mc-embedded-subscribe {
-        min-width: 119px;
-        padding: 0.88rem 1.58rem;
-        font-size: 0.77rem;
-        border-radius: 10.5px;
+        flex: 1;
+        min-width: 160px;
+        padding: 0.7rem 1.75rem;
+        font-size: 15px;
     }
 
     .success-message,
     .error-message {
-        font-size: 0.73rem;
-        margin-top: 1.23rem;
-        padding: 0.88rem 1.33rem;
-        border-radius: 10.5px;
+        font-size: 1rem;
+        margin-top: 1.15rem;
+        padding: 0.85rem 1.15rem;
     }
 }
 
-/* Standard Desktops - 1024px to 1199px */
+/* Standard Desktops - 1024px and up */
 @media (min-width: 1024px) {
     .email-section {
-        max-width: 364px;
-        margin-bottom: 2.8rem;
+        max-width: 580px;
+        margin-bottom: 2rem;
     }
 
     .email-prompt {
-        font-size: 0.91rem;
-        margin-bottom: 1.96rem;
-        font-weight: 300;
+        font-size: 1.1rem;
+        margin-bottom: 1.15rem;
+        font-weight: 700;
     }
 
     .email-form {
-        gap: 1.05rem;
+        gap: 1.15rem;
         flex-direction: row;
+        max-width: 580px;
+        padding: 1.4rem;
     }
 
     #emailInput,
     #mce-EMAIL {
-        padding: 0.91rem 1.12rem;
-        font-size: 0.77rem;
-        border-radius: 11.2px;
+        padding: 0.75rem 1rem;
+        font-size: 16px;
+        flex: 2;
     }
 
     #emailInput:focus,
     #mce-EMAIL:focus {
-        box-shadow: 0 0 0 4.2px rgba(255, 255, 255, 0.08),
-                    0 8.4px 28px rgba(0, 0, 0, 0.4);
-        transform: translateY(-2.1px);
+        outline: 1px dotted #000000;
+        outline-offset: -3px;
+        box-shadow: inset -1px -1px 0px #d4d0c8, inset 1px 1px 0px #000000, inset -2px -2px 0px #ffffff, inset 2px 2px 0px #808080;
     }
 
     .submit-btn,
     #mc-embedded-subscribe {
-        min-width: 126px;
-        padding: 0.91rem 1.75rem;
-        font-size: 0.77rem;
-        border-radius: 11.2px;
+        flex: 1;
+        min-width: 180px;
+        padding: 0.75rem 2rem;
+        font-size: 15px;
     }
 
     .submit-btn:hover,
     #mc-embedded-subscribe:hover {
-        transform: translateY(-2.1px);
-        box-shadow: 0 8.4px 28px rgba(0, 0, 0, 0.5),
-                    0 0 0 1px rgba(255, 255, 255, 0.15);
+        background: linear-gradient(180deg, #e8e8e8 0%, #dfdfdf 45%, #c8c8c8 50%, #b8b8b8 100%);
     }
 
     .success-message,
     .error-message {
-        font-size: 0.735rem;
-        margin-top: 1.4rem;
-        padding: 0.91rem 1.4rem;
-        border-radius: 11.2px;
+        font-size: 1.05rem;
+        margin-top: 1.15rem;
+        padding: 0.85rem 1.15rem;
     }
 }
 
 /* Large Desktops - 1200px to 1365px */
 @media (min-width: 1200px) and (max-width: 1365px) {
     .email-section {
-        max-width: 280px;
-        margin: 0 auto 3.15rem auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        max-width: 620px;
+        margin: 0 auto 2.25rem auto;
     }
 
     .email-prompt {
-        font-size: 0.98rem;
-        margin-bottom: 2.1rem;
-        font-weight: 300;
-        text-align: center;
+        font-size: 1.15rem;
+        margin-bottom: 1.25rem;
+        font-weight: 700;
     }
 
     .email-form {
-        gap: 1.26rem;
-        max-width: 266px;
-        margin: 0 auto;
+        gap: 1.25rem;
+        max-width: 620px;
+        flex-direction: row;
+        padding: 1.5rem;
     }
 
     #emailInput,
     #mce-EMAIL {
-        padding: 0.98rem 1.26rem;
-        font-size: 0.84rem;
-        border-radius: 12.6px;
-        width: 100%;
-        max-width: 266px;
+        padding: 0.8rem 1.1rem;
+        font-size: 17px;
+        flex: 2;
     }
 
     .submit-btn,
     #mc-embedded-subscribe {
-        width: 100%;
-        max-width: 266px;
-        padding: 0.98rem 2.1rem;
-        font-size: 0.84rem;
-        border-radius: 12.6px;
+        flex: 1;
+        min-width: 200px;
+        padding: 0.8rem 2.25rem;
+        font-size: 16px;
     }
 }
 
-/* Standard Laptop Resolution - 1366px */
+/* Standard Laptop Resolution - 1366px and up */
 @media (min-width: 1366px) {
     .email-section {
-        max-width: 287px;
-        margin: 0 auto 3.3rem auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        max-width: 650px;
+        margin: 0 auto 2.5rem auto;
     }
 
     .email-prompt {
-        font-size: 1.02rem;
-        margin-bottom: 2.28rem;
-        font-weight: 300;
-        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 1.35rem;
+        font-weight: 700;
     }
 
     .email-form {
-        gap: 1.33rem;
-        max-width: 273px;
-        margin: 0 auto;
+        gap: 1.35rem;
+        max-width: 650px;
+        flex-direction: row;
+        padding: 1.6rem;
     }
 
     #emailInput,
     #mce-EMAIL {
-        padding: 1.05rem 1.33rem;
-        font-size: 0.88rem;
-        border-radius: 13.3px;
-        width: 100%;
-        max-width: 273px;
+        padding: 0.85rem 1.2rem;
+        font-size: 17px;
+        flex: 2;
     }
 
     .submit-btn,
     #mc-embedded-subscribe {
-        width: 100%;
-        max-width: 273px;
-        padding: 1.05rem 2.28rem;
-        font-size: 0.88rem;
-        border-radius: 13.3px;
+        flex: 1;
+        min-width: 220px;
+        padding: 0.85rem 2.5rem;
+        font-size: 16px;
     }
 
     .success-message,
     .error-message {
-        font-size: 0.79rem;
-        margin-top: 1.82rem;
-        padding: 1.08rem 1.82rem;
-        border-radius: 14.7px;
+        font-size: 1.1rem;
+        margin-top: 1.35rem;
+        padding: 0.95rem 1.35rem;
     }
 }
 
 /* Extra Large Desktops - 1440px to 1919px */
 @media (min-width: 1440px) and (max-width: 1919px) {
     .email-section {
-        max-width: 294px;
-        margin: 0 auto 3.5rem auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        max-width: 700px;
+        margin: 0 auto 2.75rem auto;
     }
 
     .email-prompt {
-        font-size: 1.05rem;
-        margin-bottom: 2.45rem;
-        font-weight: 300;
+        font-size: 1.25rem;
+        margin-bottom: 1.45rem;
+        font-weight: 700;
         line-height: 1.4;
-        text-align: center;
     }
 
     .email-form {
-        gap: 1.4rem;
-        max-width: 280px;
-        margin: 0 auto;
+        gap: 1.45rem;
+        max-width: 700px;
+        flex-direction: row;
+        padding: 1.7rem;
     }
 
     #emailInput,
     #mce-EMAIL {
-        padding: 1.12rem 1.4rem;
-        font-size: 0.91rem;
-        border-radius: 14px;
-        width: 100%;
-        max-width: 280px;
+        padding: 0.9rem 1.3rem;
+        font-size: 18px;
+        flex: 2;
     }
 
     .submit-btn,
     #mc-embedded-subscribe {
-        width: 100%;
-        max-width: 280px;
-        padding: 1.12rem 2.45rem;
-        font-size: 0.91rem;
-        border-radius: 14px;
+        flex: 1;
+        min-width: 240px;
+        padding: 0.9rem 2.75rem;
+        font-size: 17px;
     }
 
     .success-message,
     .error-message {
-        font-size: 0.77rem;
-        margin-top: 1.75rem;
-        padding: 1.05rem 1.75rem;
-        border-radius: 14px;
+        font-size: 1.15rem;
+        margin-top: 1.45rem;
+        padding: 1rem 1.45rem;
     }
 }
 
-/* Full HD Displays - 1920px */
+/* Full HD Displays - 1920px and up */
 @media (min-width: 1920px) {
     .email-section {
-        max-width: 352.8px;
-        margin: 0 auto 4.2rem auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        max-width: 780px;
+        margin: 0 auto 3rem auto;
     }
 
     .email-prompt {
-        font-size: 1.26rem;
-        margin-bottom: 2.94rem;
-        font-weight: 300;
+        font-size: 1.35rem;
+        margin-bottom: 1.6rem;
+        font-weight: 700;
         line-height: 1.4;
-        text-align: center;
     }
 
     .email-form {
-        gap: 1.68rem;
-        max-width: 336px;
-        margin: 0 auto;
+        gap: 1.6rem;
+        max-width: 780px;
+        flex-direction: row;
+        padding: 1.9rem;
     }
 
     #emailInput,
     #mce-EMAIL {
-        padding: 1.344rem 1.68rem;
-        font-size: 1.092rem;
-        border-radius: 16.8px;
-        width: 100%;
-        max-width: 336px;
+        padding: 1rem 1.5rem;
+        font-size: 19px;
+        flex: 2;
     }
 
     .submit-btn,
     #mc-embedded-subscribe {
-        width: 100%;
-        max-width: 336px;
-        padding: 1.344rem 2.94rem;
-        font-size: 1.092rem;
-        border-radius: 16.8px;
+        flex: 1;
+        min-width: 280px;
+        padding: 1rem 3.25rem;
+        font-size: 18px;
     }
 
     .success-message,
     .error-message {
-        font-size: 0.924rem;
-        margin-top: 2.1rem;
-        padding: 1.26rem 2.1rem;
-        border-radius: 16.8px;
+        font-size: 1.25rem;
+        margin-top: 1.6rem;
+        padding: 1.15rem 1.6rem;
     }
 }
 
-/* 2K/QHD Displays - 2560px */
+/* 2K/QHD Displays - 2560px and up */
 @media (min-width: 2560px) {
     .email-section {
-        max-width: 411.6px;
-        margin: 0 auto 4.9rem auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        max-width: 900px;
+        margin: 0 auto 3.5rem auto;
     }
 
     .email-prompt {
-        font-size: 1.47rem;
-        margin-bottom: 3.43rem;
-        font-weight: 300;
+        font-size: 1.5rem;
+        margin-bottom: 1.85rem;
+        font-weight: 700;
         line-height: 1.4;
-        text-align: center;
     }
 
     .email-form {
-        gap: 1.96rem;
-        max-width: 392px;
-        margin: 0 auto;
+        gap: 1.85rem;
+        max-width: 900px;
+        flex-direction: row;
+        padding: 2.2rem;
     }
 
     #emailInput,
     #mce-EMAIL {
-        padding: 1.568rem 1.96rem;
-        font-size: 1.274rem;
-        border-radius: 19.6px;
-        width: 100%;
-        max-width: 392px;
+        padding: 1.15rem 1.75rem;
+        font-size: 21px;
+        flex: 2;
     }
 
     .submit-btn,
     #mc-embedded-subscribe {
-        width: 100%;
-        max-width: 392px;
-        padding: 1.568rem 3.43rem;
-        font-size: 1.274rem;
-        border-radius: 19.6px;
+        flex: 1;
+        min-width: 320px;
+        padding: 1.15rem 4rem;
+        font-size: 20px;
     }
 
     .success-message,
     .error-message {
-        font-size: 1.078rem;
-        margin-top: 2.45rem;
-        padding: 1.47rem 2.45rem;
-        border-radius: 19.6px;
+        font-size: 1.4rem;
+        margin-top: 1.85rem;
+        padding: 1.3rem 1.85rem;
     }
 }
 
@@ -886,20 +826,20 @@ body {
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     #emailInput,
     #mce-EMAIL {
-        backdrop-filter: blur(30px);
-        -webkit-backdrop-filter: blur(30px);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
     }
-    
+
     .submit-btn,
     #mc-embedded-subscribe {
-        backdrop-filter: blur(30px);
-        -webkit-backdrop-filter: blur(30px);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
     }
-    
+
     .submit-btn:hover,
     #mc-embedded-subscribe:hover {
-        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6),
-                    0 0 0 1px rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3),
+                    0 0 0 2px rgba(0, 129, 251, 0.4);
     }
 }
 
@@ -932,170 +872,172 @@ body {
 /* iPhone 13 and smaller devices - 390px and below */
 @media (max-width: 390px) {
     .email-section {
-        padding: 0 0.8rem;
-        margin-bottom: 2rem;
+        padding: 0 1rem;
+        margin-bottom: 1rem;
     }
-    
+
     .email-prompt {
         font-size: 0.9rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.75rem;
     }
-    
+
     .email-form {
         flex-direction: column;
-        gap: 0.8rem;
+        gap: 0.75rem;
+        max-width: 100%;
     }
-    
+
     #emailInput,
     #mce-EMAIL {
         width: 100%;
-        padding: 0.9rem 1rem;
+        padding: 1rem 1.25rem;
         font-size: 16px; /* Prevents iOS zoom */
-        border-radius: 10px;
+        border-radius: 12px;
     }
-    
+
     .submit-btn,
     #mc-embedded-subscribe {
         width: 100%;
         min-width: auto;
-        padding: 0.9rem 1.5rem;
+        padding: 1rem 1.5rem;
         font-size: 16px; /* Prevents iOS zoom */
-        border-radius: 10px;
+        border-radius: 12px;
     }
-    
-    .success-message, 
+
+    .success-message,
     .error-message {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         margin-top: 1rem;
-        padding: 0.8rem 1rem;
-        border-radius: 10px;
+        padding: 0.9rem 1.25rem;
+        border-radius: 12px;
     }
 }
 
 /* iPhone SE and very small devices - 320px and below */
 @media (max-width: 320px) {
     .email-section {
-        padding: 0 0.5rem;
-        margin-bottom: 1.5rem;
+        padding: 0 0.75rem;
+        margin-bottom: 1rem;
     }
-    
+
     .email-prompt {
         font-size: 0.85rem;
-        margin-bottom: 1.2rem;
+        margin-bottom: 0.65rem;
     }
-    
+
     .email-form {
         flex-direction: column;
-        gap: 0.6rem;
+        gap: 0.65rem;
+        max-width: 100%;
     }
-    
+
     #emailInput,
     #mce-EMAIL {
-        padding: 0.8rem 0.9rem;
+        padding: 0.9rem 1.1rem;
         font-size: 16px; /* Prevents iOS zoom */
-        border-radius: 8px;
+        border-radius: 10px;
     }
-    
+
     .submit-btn,
     #mc-embedded-subscribe {
-        padding: 0.8rem 1.2rem;
+        padding: 0.9rem 1.3rem;
         font-size: 16px; /* Prevents iOS zoom */
-        border-radius: 8px;
+        border-radius: 10px;
     }
-    
-    .success-message, 
+
+    .success-message,
     .error-message {
-        font-size: 0.8rem;
-        padding: 0.7rem 0.9rem;
-        border-radius: 8px;
+        font-size: 0.85rem;
+        padding: 0.8rem 1rem;
+        border-radius: 10px;
     }
 }
 
 /* Very small height devices */
 @media (max-height: 500px) {
     .email-section {
-        margin-bottom: 1.5rem;
-    }
-    
-    .email-prompt {
         margin-bottom: 1rem;
+    }
+
+    .email-prompt {
+        margin-bottom: 0.75rem;
         font-size: 0.9rem;
     }
-    
+
     .email-form {
-        gap: 0.8rem;
+        gap: 0.75rem;
     }
-    
+
     #emailInput,
     #mce-EMAIL {
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
-        border-radius: 10px;
+        padding: 0.9rem 1.25rem;
+        font-size: 16px;
+        border-radius: 12px;
     }
-    
+
     .submit-btn,
     #mc-embedded-subscribe {
-        padding: 0.8rem 1.2rem;
-        font-size: 0.9rem;
-        border-radius: 10px;
+        padding: 0.9rem 1.5rem;
+        font-size: 16px;
+        border-radius: 12px;
     }
 }
 
 /* Mobile devices - Instagram compatible */
 @media screen and (max-width: 430px) {
     .main-container {
-        padding: 0.25rem 0 !important;
+        padding: 0.5rem 0 !important;
     }
-    
+
     .hero-section {
-        padding: 0.5rem !important;
+        padding: 0.75rem !important;
     }
-    
+
     .brand-logo {
         margin-bottom: 1rem !important;
     }
-    
+
     .countdown-container {
         margin-bottom: 1rem !important;
     }
-    
+
     .progress-section {
         margin-bottom: 1rem !important;
     }
-    
+
     .email-form {
         flex-direction: column !important;
-        gap: 1rem !important;
-        align-items: center !important;
-        max-width: 320px !important;
-        margin: 0 auto 1rem auto !important;
+        gap: 0.75rem !important;
+        max-width: 100% !important;
+        margin: 0 auto 0.75rem auto !important;
     }
-    
+
     #mce-EMAIL {
         width: 100% !important;
-        max-width: 280px !important;
         font-size: 16px !important;
-        padding: 1rem !important;
-        text-align: center !important;
+        padding: 1rem 1.25rem !important;
+        border-radius: 12px !important;
+        text-align: left !important;
         flex: none !important;
     }
-    
+
     .submit-btn,
     #mc-embedded-subscribe {
         width: 100% !important;
-        max-width: 280px !important;
-        font-size: 14px !important;
-        padding: 1rem !important;
+        font-size: 16px !important;
+        padding: 1rem 1.5rem !important;
+        border-radius: 12px !important;
         flex-shrink: 0 !important;
     }
-    
+
     .email-section {
-        margin-bottom: 0.5rem !important;
+        margin-bottom: 1rem !important;
         padding: 0 1rem !important;
     }
-    
+
     .email-prompt {
         margin-bottom: 0.75rem !important;
+        font-size: 0.9rem !important;
     }
     
     /* Instagram links - compact for mobile */
@@ -1416,9 +1358,9 @@ body {
 }
 
 #mc_embed_signup div.response {
-    background-color: rgba(0, 255, 102, 0.1) !important;
-    border-color: #00ff66 !important;
-    color: #00ff66 !important;
+    background-color: rgba(0, 129, 251, 0.1) !important;
+    border-color: #0081fb !important;
+    color: #0081fb !important;
 }
 
 #mc_embed_signup #mce-responses {
@@ -1499,7 +1441,7 @@ body {
 }
 
 .instagram-link:hover {
-    background: rgba(0, 255, 102, 0.1);
+    background: rgba(0, 129, 251, 0.1);
     border-color: #000000;
     color: #000000;
     transform: translateY(-1.4px);
@@ -1514,7 +1456,7 @@ body {
     border-radius: 50%;
     overflow: hidden;
     border: 1.05px solid #ffffff79;
-    background: rgba(0, 255, 102, 0.1);
+    background: rgba(0, 129, 251, 0.1);
     flex-shrink: 0;
 }
 
@@ -1548,7 +1490,7 @@ body {
 .instagram-icon {
     width: 9.8px;
     height: 9.8px;
-    color: #92e692;
+    color: #0081fb;
     transition: all 0.3s ease;
     flex-shrink: 0;
 }
@@ -1560,12 +1502,12 @@ body {
 }
 
 .instagram-link:hover .instagram-icon {
-    color: #00ff80;
+    color: #0081fb;
     transform: scale(1.1);
 }
 
 .instagram-link:hover .profile-pic {
-    border-color: #00ff80;
+    border-color: #0081fb;
     transform: scale(1.05);
 }
 
@@ -1792,7 +1734,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.3rem;
-    color: #00ff66;
+    color: #0081fb;
     font-size: 0.85rem;
     font-weight: 500;
 }
@@ -1800,8 +1742,8 @@ body {
 .follower-number {
     font-size: 1.1rem;
     font-weight: bold;
-    color: #00ff66;
-    text-shadow: 0 0 5px rgba(0, 255, 102, 0.3);
+    color: #0081fb;
+    text-shadow: 0 0 5px rgba(0, 129, 251, 0.3);
 }
 
 .follower-text {
@@ -2394,7 +2336,7 @@ body {
 /* High DPI / Retina displays */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .brand-title {
-        text-shadow: 0 0 20px #00ff66, 0 0 40px #00ff66, 0 0 60px #00ff66, 0 0 80px #00ff66;
+        text-shadow: 0 0 20px #0081fb, 0 0 40px #0081fb, 0 0 60px #0081fb, 0 0 80px #0081fb;
     }
     
     
