@@ -3412,23 +3412,34 @@ body {
         min-height: 32px;
     }
 
+    .inline-signup.expanded {
+        width: 70%;
+        max-width: 240px;
+    }
+
     .inline-signup.expanded .pill-wrapper {
-        padding: 5px 6px;
-        gap: 4px;
+        padding: 5px 7px;
+        gap: 5px;
         flex-direction: column;
         align-items: stretch;
     }
 
     .inline-signup.expanded .notify-button {
-        padding: 6px 12px;
+        padding: 7px 14px;
         width: 100%;
+        font-size: 11px;
+    }
+
+    .inline-signup.expanded .notify-button::before {
+        font-size: 11px;
     }
 
     .inline-signup.expanded .inline-email-input {
-        padding: 6px 10px;
+        padding: 7px 12px;
         font-size: 11px;
         min-width: auto;
         width: 100%;
+        max-width: 100%;
     }
 
     /* Menu Panel */
@@ -3520,22 +3531,32 @@ body {
         font-size: 11px;
     }
 
+    .inline-signup.expanded {
+        width: 72%;
+        max-width: 250px;
+    }
+
     .inline-signup.expanded .pill-wrapper {
         flex-direction: column;
-        gap: 4px;
-        padding: 5px 6px;
+        gap: 5px;
+        padding: 6px 8px;
     }
 
     .inline-signup.expanded .notify-button {
         width: 100%;
-        padding: 6px 12px;
+        padding: 7px 14px;
+    }
+
+    .inline-signup.expanded .notify-button::before {
+        font-size: 11px;
     }
 
     .inline-signup.expanded .inline-email-input {
         width: 100%;
         min-width: auto;
-        padding: 6px 10px;
+        padding: 7px 12px;
         font-size: 11px;
+        max-width: 100%;
     }
 }
 
@@ -3607,23 +3628,33 @@ body {
         font-size: 12px;
     }
 
+    .inline-signup.expanded {
+        width: 75%;
+        max-width: 270px;
+    }
+
     .inline-signup.expanded .pill-wrapper {
         flex-direction: column;
-        gap: 4px;
-        padding: 6px 8px;
+        gap: 5px;
+        padding: 7px 9px;
     }
 
     .inline-signup.expanded .notify-button {
-        padding: 6px 14px;
+        padding: 7px 16px;
         width: 100%;
         flex-shrink: 0;
+    }
+
+    .inline-signup.expanded .notify-button::before {
+        font-size: 12px;
     }
 
     .inline-signup.expanded .inline-email-input {
         width: 100%;
         min-width: auto;
-        padding: 6px 12px;
+        padding: 7px 14px;
         font-size: 12px;
+        max-width: 100%;
     }
 }
 
@@ -3690,22 +3721,32 @@ body {
         font-size: 12px;
     }
 
+    .inline-signup.expanded {
+        width: 78%;
+        max-width: 290px;
+    }
+
     .inline-signup.expanded .pill-wrapper {
         flex-direction: column;
-        gap: 5px;
-        padding: 7px 9px;
+        gap: 6px;
+        padding: 8px 10px;
     }
 
     .inline-signup.expanded .notify-button {
-        padding: 7px 16px;
+        padding: 8px 18px;
         width: 100%;
+    }
+
+    .inline-signup.expanded .notify-button::before {
+        font-size: 12px;
     }
 
     .inline-signup.expanded .inline-email-input {
         width: 100%;
         min-width: auto;
-        padding: 7px 14px;
+        padding: 8px 16px;
         font-size: 12px;
+        max-width: 100%;
     }
 }
 
