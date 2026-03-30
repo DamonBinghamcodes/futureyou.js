@@ -130,12 +130,13 @@ body {
     .header-meta {
       flex-direction: row; /* Stacks the items vertically on mobile */
       align-items: center; /* Centers items on mobile */
-      gap: 0.25rem; /* Reduces gap for mobile */
+      gap: 0.5rem; /* Reduces gap for mobile */
       
     }
     
     .header-datetime {
       justify-content: center; /* Centers date and time on mobile */
+      gap: .25rem; /* Reduces gap for mobile */
       
     }
     
