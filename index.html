@@ -21,6 +21,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <navbar class="site-navbar">
+        <!-- This holds the live location, date, and time -->
+  <div class="header-meta">
+    <!-- This small green dot copies that Hidden-style live status look -->
+    <span class="status-dot"></span> 
+    <!-- This is where JavaScript will insert the timezone/location text -->
+    <span id="header-location">Gold Coast</span>
+    <span id="header-temp">--°C</span>
+    <!-- Date and time grouped so they stay on the same line when wrapping -->
+    <span class="header-datetime"><span id="header-date">Loading date...</span><span id="header-time">Loading time...</span></span>
+  </div>
+  </navbar>
     <main class="gallery-container">
         <!-- Logo Section -->
         <header class="logo-section">

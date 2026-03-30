@@ -116,3 +116,81 @@ document.addEventListener('contextmenu', function(e) {
   // Uncomment to disable right-click
   // e.preventDefault();
 });
+
+
+// Navbar time, date, and temperature status
+document.addEventListener("DOMContentLoaded", function () {
+
+  // These select the HTML elements we want to update
+  const locationElement = document.getElementById("header-location");
+  const dateElement = document.getElementById("header-date");
+  const timeElement = document.getElementById("header-time");
+  const tempElement = document.getElementById("header-temp");
+
+  // This is your manual display location
+  const readableLocation = "Gold Coast, Australia";
+
+  // These are Gold Coast coordinates
+  const latitude = -28.0167;
+  const longitude = 153.4000;
+
+  // This function updates the date and time every second
+  function updateHeaderDateTime() {
+
+    // This gets the current date and time from the user's device
+    const now = new Date();
+
+    // This formats the date like "Mar 30"
+    const formattedDate = now.toLocaleDateString("en-AU", {
+      month: "short",
+      day: "numeric",
+    });
+
+    // This formats the time like "4:40 AM"
+    const formattedTime = now.toLocaleTimeString("en-AU", {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
+
+    // This updates the text in the header
+    locationElement.textContent = readableLocation;
+    dateElement.textContent = formattedDate;
+    timeElement.textContent = formattedTime;
+  }
+
+  // This function fetches the current temperature from Open-Meteo
+  async function updateTemperature() {
+    try {
+      // This requests current temperature data for Gold Coast
+      const response = await fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m`
+      );
+
+      // This converts the response into JSON data
+      const data = await response.json();
+
+      // This reads the current temperature value from the API response
+      const currentTemp = data.current.temperature_2m;
+
+      // This updates the temperature text in the header
+      tempElement.textContent = `${Math.round(currentTemp)}°C`;
+    } catch (error) {
+      // This shows fallback text if the API request fails
+      tempElement.textContent = "--°C";
+
+      // This logs the error in the browser console for debugging
+      console.error("Weather fetch failed:", error);
+    }
+  }
+
+  // This runs both functions once when the page loads
+  updateHeaderDateTime();
+  updateTemperature();
+
+  // This updates time every second
+  setInterval(updateHeaderDateTime, 1000);
+
+  // This updates temperature every 10 minutes
+  setInterval(updateTemperature, 600000);
+});
