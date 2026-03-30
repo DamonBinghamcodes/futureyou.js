@@ -128,7 +128,7 @@ body {
   /* Mobile Layout */
   @media screen and (max-width: 480px) {
     .header-meta {
-      flex-direction: column; /* Stacks the items vertically on mobile */
+      flex-direction: row; /* Stacks the items vertically on mobile */
       align-items: center; /* Centers items on mobile */
       gap: 0.25rem; /* Reduces gap for mobile */
       font-size: 0.8rem; /* Slightly smaller text for mobile */
