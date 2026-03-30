@@ -125,6 +125,22 @@ body {
     }
   }
 
+  /* Mobile Layout */
+  @media screen and (max-width: 480px) {
+    .header-meta {
+      flex-direction: column; /* Stacks the items vertically on mobile */
+      align-items: center; /* Centers items on mobile */
+      gap: 0.25rem; /* Reduces gap for mobile */
+      font-size: 0.8rem; /* Slightly smaller text for mobile */
+    }
+    
+    .header-datetime {
+      justify-content: center; /* Centers date and time on mobile */
+      font-size: 0.8rem; /* Slightly smaller text for date and time on mobile */
+    }
+    
+  }
+
 img {
   max-width: 100%;
   height: auto;
