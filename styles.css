@@ -364,6 +364,7 @@ a {
   width: clamp(120px, 30vw, 200px);
   height: auto;
   object-fit: contain;
+  margin-bottom: -1rem; /* Adjusts spacing below the logo */
 }
 
 /* ===================================
@@ -409,7 +410,7 @@ a {
 /* Home Enter Button */
 .home-btn {
   margin-top: -2rem;
-  margin-bottom: -1rem;
+  margin-bottom: -2rem;
   padding: 0.75rem 2rem;
   background: var(--color-blue);
   border: none;
@@ -486,7 +487,7 @@ a {
 .email-home-form-text {
   font-size: 0.8rem;
   color: var(--color-gray-dark);
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-sm);
 }
 
 .email-home-form-text p:first-child {
