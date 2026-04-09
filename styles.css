@@ -781,13 +781,15 @@ input:focus-visible {
 /* Archive HTML Styling */
 
 .archive-section {
-  margin: 100px auto; /* To avoid overlap with fixed navbar */;
+  margin: 100px auto 2rem;
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
   text-align: left;
   font-family: var(--font-secondary);
-  padding: 15px;
+  padding: 1rem 1rem 2rem;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .archive-header {
@@ -797,16 +799,19 @@ input:focus-visible {
 }
 
 .archive-description {
-  font-size: 1.7rem;
+  font-size: 1.2rem;
   color: var(--color-gray-dark);
-  margin-top: -50px; /* Negative margin to pull description up closer to header */
+  margin-top: -1rem;
   margin-bottom: var(--space-md);
+}
+
+.archive-table-wrapper {
+  width: 100%;
 }
 
 .archive-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px auto;
   line-height: 1.5;
   font-family: var(--font-secondary);
   font-size: 0.9rem;
@@ -855,10 +860,40 @@ input:focus-visible {
 }
 
 legend {
-  font-size: 1.05rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: var(--color-gray-medium);
   margin-bottom: var(--space-md);
-  text-wrap: none;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .archive-section {
+    margin-top: 80px;
+    padding: 1rem 0.75rem 2rem;
+    gap: 1rem;
+  }
+
+  .archive-header {
+    font-size: 1.2rem;
+  }
+
+  .archive-description {
+    font-size: 1rem;
+    margin-top: -0.5rem;
+  }
+
+  .archive-table {
+    font-size: 0.65rem;
+  }
+
+  .archive-table th {
+    font-size: 0.55rem;
+    padding: 0 0.4rem 0.5rem 0;
+  }
+
+  .archive-table td {
+    padding: 0.6rem 0.4rem 0.6rem 0;
+  }
 }
 
