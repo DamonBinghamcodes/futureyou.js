@@ -408,7 +408,8 @@ a {
 
 /* Home Enter Button */
 .home-btn {
-  margin-top: var(--space-xs);
+  margin-top: -2rem;
+  margin-bottom: -1rem;
   padding: 0.75rem 2rem;
   background: var(--color-blue);
   border: none;
