@@ -194,3 +194,82 @@ document.addEventListener("DOMContentLoaded", function () {
   // This updates temperature every 10 minutes
   setInterval(updateTemperature, 600000);
 });
+
+// Menu Overlay (Hamburger Menu)
+/* ====== Menu Toggle ====== */
+(function () {
+  const menuBtn = document.querySelector('.menuBtn');
+  const overlay = document.getElementById('menuOverlay');
+  if (!menuBtn || !overlay) return;
+  const overlayInner = overlay.querySelector('.menuOverlay__inner');
+  const closeBtn = overlay.querySelector('.menuClose');
+  const menuLinks = overlay.querySelectorAll('[data-close-menu]');
+
+  function openMenu() {
+    overlay.classList.add('isOpen');
+    overlay.setAttribute('aria-hidden', 'false');
+    menuBtn.classList.add('isActive');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('noScroll');
+  }
+
+  function closeMenu() {
+    overlay.classList.remove('isOpen');
+    overlay.setAttribute('aria-hidden', 'true');
+    menuBtn.classList.remove('isActive');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('noScroll');
+  }
+
+  menuBtn.addEventListener('click', function () {
+    overlay.classList.contains('isOpen') ? closeMenu() : openMenu();
+  });
+
+  closeBtn.addEventListener('click', closeMenu);
+
+  overlay.addEventListener('click', function (e) {
+    if (!overlayInner.contains(e.target)) closeMenu();
+  });
+
+  menuLinks.forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  /* ====== Dynamic Year ====== */
+  var year = new Date().getFullYear();
+  var yearEl = document.getElementById('year');
+  var yearFooterEl = document.getElementById('yearFooter');
+  if (yearEl) yearEl.textContent = year;
+  if (yearFooterEl) yearFooterEl.textContent = year;
+})();
+
+/* ====== Archive Page Hamburger Menu ====== */
+(function () {
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileOverlay = document.getElementById('mobile-menu-overlay');
+  const mobileClose = document.getElementById('mobile-menu-close');
+
+  if (!hamburger || !mobileMenu || !mobileOverlay) return;
+
+  function openHamburger() {
+    mobileMenu.classList.add('open');
+    mobileOverlay.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeHamburger() {
+    mobileMenu.classList.remove('open');
+    mobileOverlay.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  }
+
+  hamburger.addEventListener('click', function () {
+    mobileMenu.classList.contains('open') ? closeHamburger() : openHamburger();
+  });
+
+  mobileOverlay.addEventListener('click', closeHamburger);
+  if (mobileClose) mobileClose.addEventListener('click', closeHamburger);
+})();

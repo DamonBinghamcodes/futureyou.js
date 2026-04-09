@@ -9,7 +9,7 @@
   --color-white: #FFFFFF;
   --color-black: #000000;
   --color-gray-light: #F5F5F5;
-  --color-gray-medium: #E0E0E0;
+  --color-gray-medium: #7e7e7e;
   --color-gray-dark: #333333;
   --color-blue: #0081fb;
   --color-blue-hover: #0070db;
@@ -25,6 +25,7 @@
 
   /* Typography */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  --font-secondary: 'Helvetica neue', Poppins, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
 
   /* Transitions */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -66,19 +67,181 @@ body {
   background: var(--color-white);
   border-bottom: 1px dotted var(--color-gray-medium);
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  opacity: 0.95;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.navbar-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Hamburger button */
+.hamburger {
+  background: none;
+  border: none;
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-black);
+  cursor: pointer;
+  padding: 0;
+  letter-spacing: 0.05em;
+  display: none; /* Hidden on desktop */
+}
+
+/* Mobile menu drawer */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 260px;
+  height: 100%;
+  background: var(--color-white);
+  border-left: 1px dotted var(--color-gray-medium);
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  transition: right 0.25s ease;
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-menu-close {
+  background: none;
+  border: none;
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-black);
+  cursor: pointer;
+  padding: 0;
+  align-self: flex-end;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.mobile-nav-link {
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-gray-dark);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  padding-bottom: 1rem;
+  border-bottom: 1px dotted var(--color-gray-medium);
+}
+
+.mobile-nav-link.active {
+  color: var(--color-black);
+  font-weight: 600;
+}
+
+.mobile-nav-link:hover {
+  color: var(--color-black);
+}
+
+/* Overlay behind the drawer */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1050;
+}
+
+.mobile-menu-overlay.open {
+  display: block;
+}
+
+/* Desktop nav */
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.desktop-nav-link {
+  font-family: var(--font-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-gray-dark);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  padding-bottom: 2px;
+  border-bottom: 1px dotted transparent;
+}
+
+.desktop-nav-link.active {
+  color: var(--color-black);
+  font-weight: 600;
+  border-bottom-color: var(--color-black);
+}
+
+.desktop-nav-link:hover {
+  color: var(--color-black);
+  border-bottom-color: var(--color-gray-medium);
+}
+
+/* Show hamburger on mobile, hide desktop nav */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  
+}
+
+.wordmark {
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-black);
+}
+
+.byline {
+  font-family: var(--font-secondary);
+  font-size: 0.8rem;
+  font-weight: 475;
+  color: var(--muted);
 }
 
   /* This styles the middle meta section */
   .header-meta {
-    display: flex; /* Places the dot and text in a row */
-    align-items: center; /* Vertically aligns them */
-    gap: 0.5rem; /* Adds space between each item */
-    font-size: 0.95rem; /* Slightly smaller text */
-    font-weight: 500; /* Gives the text medium thickness */
-    max-width: var(--max); /* Match page width */
-    margin: 0 auto; /* Center */
-    padding: 14px var(--pad); /* Spacing */
-    font-family: "Helvetica Neue", sans-serif; /* A bit more personality for the meta */
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: "Helvetica Neue", sans-serif;
+    flex-wrap: nowrap;
+    white-space: nowrap;
   }
   
   .header-datetime {
@@ -613,3 +776,89 @@ input:focus-visible {
     transition: none !important;
   }
 }
+
+
+/* Archive HTML Styling */
+
+.archive-section {
+  margin: 100px auto; /* To avoid overlap with fixed navbar */;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  text-align: left;
+  font-family: var(--font-secondary);
+  padding: 15px;
+}
+
+.archive-header {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.archive-description {
+  font-size: 1.7rem;
+  color: var(--color-gray-dark);
+  margin-top: -50px; /* Negative margin to pull description up closer to header */
+  margin-bottom: var(--space-md);
+}
+
+.archive-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  line-height: 1.5;
+  font-family: var(--font-secondary);
+  font-size: 0.9rem;
+}
+
+.archive-table thead tr {
+  border-bottom: 1px solid var(--color-black);
+}
+
+.archive-table th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0 1rem 0.6rem 0;
+  color: var(--color-gray-medium);
+  white-space: nowrap;
+}
+
+.archive-table td {
+  padding: 0.75rem 1rem 0.75rem 0;
+  vertical-align: middle;
+  color: var(--color-gray-dark);
+  border-bottom: 1px dotted var(--color-gray-medium);
+}
+
+.archive-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.archive-table td:first-child,
+.archive-table th:first-child {
+  color: var(--color-black);
+  font-weight: 500;
+}
+
+.archive-table td a {
+  color: var(--color-blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.archive-table td a:hover {
+  text-decoration: underline;
+}
+
+legend {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--color-gray-medium);
+  margin-bottom: var(--space-md);
+  text-wrap: none;
+}
+
