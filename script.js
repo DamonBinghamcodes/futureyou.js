@@ -55,55 +55,72 @@ document.addEventListener('DOMContentLoaded', function() {
     typeWriter(typewriterElement, 'A creative index.', 80);
   }
 
-  // Get form elements
-  const emailForm = document.getElementById('mc-embedded-subscribe-form');
-  const emailInput = document.getElementById('mce-EMAIL');
-  const submitBtn = document.getElementById('mc-embedded-subscribe');
+  // Mailchimp AJAX submission — no redirect
+  function initMailchimpForm(form) {
+    if (!form) return;
+    const emailInput = form.querySelector('[name="EMAIL"]');
+    const submitBtn = form.querySelector('[type="submit"]');
+    const errorEl = form.querySelector('#mce-error-response');
+    const successEl = form.querySelector('#mce-success-response');
 
-  // Form submission handling
-  if (emailForm && emailInput && submitBtn) {
-    emailForm.addEventListener('submit', function(e) {
-      // Check if email is valid before submitting
-      if (emailInput.validity.valid) {
-        submitBtn.textContent = 'Submitting...';
-        submitBtn.disabled = true;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-        // Re-enable button after 3 seconds (in case of slow response)
-        setTimeout(() => {
-          if (submitBtn.disabled) {
-            submitBtn.textContent = 'Subscribe';
-            submitBtn.disabled = false;
-          }
-        }, 3000);
+      if (!emailInput || !emailInput.validity.valid) {
+        emailInput.focus();
+        return;
       }
+
+      submitBtn.textContent = 'Submitting...';
+      submitBtn.disabled = true;
+
+      // Build JSONP URL — Mailchimp requires /post-json endpoint
+      const url = form.action.replace('/post?', '/post-json?');
+      const params = new URLSearchParams(new FormData(form));
+      const callbackName = 'mc_cb_' + Date.now();
+      params.set('c', callbackName);
+
+      const script = document.createElement('script');
+      script.src = url + '&' + params.toString();
+
+      window[callbackName] = function(response) {
+        delete window[callbackName];
+        document.head.removeChild(script);
+
+        submitBtn.textContent = 'Subscribe';
+        submitBtn.disabled = false;
+
+        if (response.result === 'success') {
+          if (successEl) { successEl.textContent = response.msg; successEl.style.display = 'block'; }
+          if (errorEl) errorEl.style.display = 'none';
+          emailInput.value = '';
+        } else {
+          const msg = response.msg ? response.msg.replace(/^\d+ - /, '') : 'Something went wrong. Please try again.';
+          if (errorEl) { errorEl.textContent = msg; errorEl.style.display = 'block'; }
+          if (successEl) successEl.style.display = 'none';
+        }
+      };
+
+      document.head.appendChild(script);
     });
 
-    // Input focus effects
-    emailInput.addEventListener('focus', function() {
-      this.style.textAlign = 'left';
-    });
+    // Input focus alignment
+    if (emailInput) {
+      emailInput.addEventListener('focus', function() { this.style.textAlign = 'left'; });
+      emailInput.addEventListener('blur', function() { if (!this.value) this.style.textAlign = 'center'; });
 
-    emailInput.addEventListener('blur', function() {
-      if (this.value === '') {
-        this.style.textAlign = 'center';
+      if (isInstagramBrowser()) {
+        ['click', 'touchstart'].forEach(function(evt) {
+          emailInput.addEventListener(evt, function() {
+            this.style.setProperty('text-align', 'left', 'important');
+          });
+        });
       }
-    });
-
-    // Handle Instagram browser input alignment
-    if (isInstagramBrowser()) {
-      emailInput.addEventListener('click', function() {
-        this.style.textAlign = 'left';
-        this.style.setProperty('text-align', 'left', 'important');
-        this.style.setProperty('-webkit-text-align-last', 'left', 'important');
-        this.style.setProperty('text-align-last', 'left', 'important');
-      });
-
-      emailInput.addEventListener('touchstart', function() {
-        this.style.textAlign = 'left';
-        this.style.setProperty('text-align', 'left', 'important');
-      });
     }
   }
+
+  // Init all Mailchimp forms on the page
+  document.querySelectorAll('form[name="mc-embedded-subscribe-form"]').forEach(initMailchimpForm);
 
   // Console signature
   console.log('%cFUTUREYOU', 'font-size: 24px; font-weight: bold; color: #0081fb;');

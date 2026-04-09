@@ -459,6 +459,23 @@ a {
   text-align: left;
 }
 
+.email-home-form-text {
+  font-size: 0.7rem;
+  color: var(--color-gray-dark);
+  margin-bottom: var(--space-xs);
+}
+
+.email-home-form-text p:first-child {
+  display: block;
+  margin: 0;
+}
+
+.email-home-form-text p:last-child,
+.email-home-form-text span {
+  display: inline;
+  margin: 0;
+}
+
 .subscribe-btn {
   width: 100%;
   padding: 1rem 2rem;
@@ -867,6 +884,83 @@ legend {
   display: block;
 }
 
+/* Archive page — email + footer overrides */
+.archive-email-section {
+  padding: 0 1rem;
+  max-width: 480px;
+}
+
+.email-form-text {
+  font-size: 0.7rem;
+  color: var(--color-gray-dark);
+  margin-bottom: var(--space-xs);
+}
+
+.email-form-text p:first-child {
+  display: block;
+  margin: 0;
+}
+
+.email-form-text p:last-child,
+.email-form-text span {
+  display: inline;
+  margin: 0;
+}
+
+.archive-email-section .form-group {
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.archive-email-section #mce-EMAIL {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  text-align: left;
+  border-radius: 4px;
+}
+
+.archive-email-section .subscribe-btn {
+  width: auto;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.archive-footer {
+  padding: 1rem 1rem 2rem;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+  border-top: 1px dotted var(--color-gray-medium);
+}
+
+.archive-footer .social-links {
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.archive-footer .social-link {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  gap: 0.35rem;
+}
+
+.archive-footer .social-icon {
+  width: 13px;
+  height: 13px;
+}
+
+.archive-footer .brand-icon {
+  height: 16px;
+}
+
+.archive-footer .footer-heading {
+  font-size: 0.65rem;
+  margin-bottom: 0.5rem;
+}
+
 @media (max-width: 768px) {
   .archive-section {
     margin-top: 80px;
@@ -897,3 +991,8 @@ legend {
   }
 }
 
+.table-footer-text {
+  font-size: 0.75rem;
+  color: var(--color-gray-dark);
+  margin-top: var(--space-sm);
+}
