@@ -91,9 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.disabled = false;
 
         if (response.result === 'success') {
-          if (successEl) { successEl.textContent = response.msg; successEl.style.display = 'block'; }
-          if (errorEl) errorEl.style.display = 'none';
-          emailInput.value = '';
+          window.location.href = 'thank-you.html';
         } else {
           const msg = response.msg ? response.msg.replace(/^\d+ - /, '') : 'Something went wrong. Please try again.';
           if (errorEl) { errorEl.textContent = msg; errorEl.style.display = 'block'; }
