@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize typewriter effect
   const typewriterElement = document.getElementById('typewriter');
   if (typewriterElement) {
-    typeWriter(typewriterElement, 'A creative index.', 80);
+    typeWriter(typewriterElement, 'An evolving archive of products, creatives & stories worth preserving.', 80);
   }
 
   // Mailchimp AJAX submission — no redirect

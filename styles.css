@@ -372,7 +372,7 @@ a {
    =================================== */
 
 .tagline {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(1rem, 5vw, 2.5rem);
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 1.2;
